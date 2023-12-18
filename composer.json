@@ -1,0 +1,152 @@
+{
+    "name": "laravel/laravel",
+    "type": "project",
+    "description": "The skeleton application for the Laravel framework.",
+    "keywords": ["laravel", "framework"],
+    "license": "MIT",
+    "require": {
+        "php": "^8.1",
+        "guzzlehttp/guzzle": "^7.2",
+        "laravel/framework": "^10.10",
+        "laravel/sanctum": "^3.3",
+        "laravel/tinker": "^2.8",
+        "yazdan/about": "dev-main",
+        "yazdan/address": "dev-main",
+        "yazdan/blog": "dev-main",
+        "yazdan/category": "dev-main",
+        "yazdan/comment": "dev-main",
+        "yazdan/common": "dev-main",
+        "yazdan/contact": "dev-main",
+        "yazdan/front": "dev-main",
+        "yazdan/home": "dev-main",
+        "yazdan/media": "dev-main",
+        "yazdan/product": "dev-main",
+        "yazdan/role": "dev-main",
+        "yazdan/search": "dev-main",
+        "yazdan/setting": "dev-main",
+        "yazdan/slider": "dev-main",
+        "yazdan/user": "dev-main"
+    },
+    "require-dev": {
+        "fakerphp/faker": "^1.9.1",
+        "laravel/pint": "^1.0",
+        "laravel/sail": "^1.18",
+        "mockery/mockery": "^1.4.4",
+        "nunomaduro/collision": "^7.0",
+        "phpunit/phpunit": "^10.1",
+        "spatie/laravel-ignition": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./modules/Yazdan/Front"
+        },
+        {
+            "type": "path",
+            "url": "./modules/Yazdan/Common"
+        },
+        {
+            "type": "path",
+            "url": "./modules/Yazdan/Media"
+        },
+        {
+            "type": "path",
+            "url": "./modules/Yazdan/RolePermissions"
+        },
+        {
+            "type": "path",
+            "url": "./modules/Yazdan/User"
+        },
+        {
+            "type": "path",
+            "url": "./modules/Yazdan/Dashboard"
+        },
+        {
+            "type": "path",
+            "url": "./modules/Yazdan/Home"
+        },
+        {
+            "type": "path",
+            "url": "./modules/Yazdan/Slider"
+        },
+        {
+            "type": "path",
+            "url": "./modules/Yazdan/Setting"
+        },
+        {
+            "type": "path",
+            "url": "./modules/Yazdan/About"
+        },
+        {
+            "type": "path",
+            "url": "./modules/Yazdan/Contact"
+        },
+        {
+            "type": "path",
+            "url": "./modules/Yazdan/Category"
+        },
+        {
+            "type": "path",
+            "url": "./modules/Yazdan/Comment"
+        },
+        {
+            "type": "path",
+            "url": "./modules/Yazdan/Blog"
+        },
+        {
+            "type": "path",
+            "url": "./modules/Yazdan/Product"
+        },
+        {
+            "type": "path",
+            "url": "./modules/Yazdan/Address"
+        },
+        {
+            "type": "path",
+            "url": "./modules/Yazdan/Search"
+        }
+    ],
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
