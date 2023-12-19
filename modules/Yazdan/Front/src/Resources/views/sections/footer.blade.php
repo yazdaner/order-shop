@@ -14,7 +14,7 @@
                     <div class="newsletter-inner">
                         <form id="mc-form">
                             <input type="email" class="news-field" id="mc-email" autocomplete="off" placeholder="
-آدرس ایمیل خود را وارد کنید">
+                    آدرس ایمیل خود را وارد کنید">
                             <button class="news-btn" id="mc-submit">اشتراک در</button>
                         </form>
                         <!-- mailchimp-alerts Start -->
@@ -28,10 +28,10 @@
                 </div>
                 <div class="col-lg-3">
                     <div class="footer-social-link">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                        <a href="{{$setting->facebook}}"><i class="fa fa-facebook"></i></a>
+                        <a href="{{$setting->twitter}}"><i class="fa fa-twitter"></i></a>
+                        <a href="{{$setting->whatsapp}}"><i class="fa fa-whatsapp"></i></a>
+                        <a href="{{$setting->linkedin}}"><i class="fa fa-linkedin"></i></a>
                     </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                     <div class="fotter-widget-item">
                         <div class="footer-widget-title">
                             <div class="footer-logo">
-                                <a href="index-1.html">
+                                <a href="/">
                                     <img src="assets//images/img/logo/logo.png" alt="">
                                 </a>
                             </div>
@@ -60,16 +60,16 @@
                                 </div>
                                 <div class="support-info">
                                     <h6>رایگان با ما تماس بگیرید</h6>
-                                    <p>(+98)9196028489</p>
+                                    <p>{{$setting->telephone}}</p>
                                 </div>
                             </div>
                             <div class="footer-contact-info">
-                                <h6>اطلاعات تماس:</h6>
-                                <p>تهران  ، میدان ولیعصر ، نبش بازرگانی</p>
+                                <h6>آدرس:</h6>
+                                <p>{{$setting->address}}</p>
                             </div>
                             <div class="footer-contact-info footer-email">
-                                <h6>اطلاعات تماس:</h6>
-                                <p><a href="#">jalil747443@gmail.com</a></p>
+                                <h6>ایمیل:</h6>
+                                <p><a href="#">{{$setting->email}}</a></p>
                             </div>
                         </div>
                     </div>
@@ -181,10 +181,7 @@
                     </div>
                 </div>
                 <div class="col-lg-12">
-                    <p class="f-middle-text">ما به ارائه نه تنها ابزارهای داغ و هدایای عالی، بلکه بهترین پشتیبانی و خدمات را نیز باور داریم. ما بیش از 10 سال است که بهترین قیمت را برای شما به ارمغان می آوریم، هر اقلامی که ذخیره می کنیم به دقت انتخاب می شود تا اطمینان حاصل شود که کیفیت برتر را با قیمت های رقابتی به شما ارائه می دهیم.</p>
-                    <div class="payment-img text-center">
-                        <img src="assets//images/img/payment.png" alt="">
-                    </div>
+                    <p class="f-middle-text">{{$setting->description}}</p>
                 </div>
             </div>
         </div>
@@ -194,8 +191,7 @@
     <!-- footer bottom area start -->
     <div class="footer-bottom-area bg-white">
         <div class="copyright-text">
-            <p>&copy;  8/<b>8/</b> 1402  <i class="fa fa-heart text-danger"></i>
-                <a href="https://hasthemes.com/"><b>قالب اوسترومی</b></a></p>
+            <p>&copy; {{$setting->copyright}}</p>
         </div>
     </div>
     <!-- footer bottom area end -->

@@ -1,13 +1,4 @@
-<div class="mb-3">
-    <label class="form-label">
-        {{$label}}
-        @if ($required)
-            <span class="text-danger">*</span>
-        @endif
-    </label>
-    <div class="form-icon position-relative">
-        {{ $slot }}
-        <textarea name="{{$name}}" rows="4" placeholder="{{$label}}" {{ $attributes->merge(['class' => 'form-control ps-5'])}}>{{$value ?? old($name)}}</textarea>
-    </div>
+<div class="contact2-textarea text-center mb-3">
+    <textarea placeholder="{{$label}}" name="{{$name}}" {{ $attributes->merge(['class' => 'form-control2 mb-0'])}}>{!! isset($value) ? $value : old($name) !!}</textarea>
     <x-validation-error field="{{$name}}" />
 </div>

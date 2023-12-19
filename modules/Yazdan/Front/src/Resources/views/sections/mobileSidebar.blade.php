@@ -24,7 +24,7 @@
                     <ul class="mobile-menu">
                         <li class="menu-item-has-children active"><a href="#">صفحه اصلی</a>
                             <ul class="dropdown">
-                                <li><a href="index-1.html">صفحه اصلی 1</a></li>
+                                <li><a href="/">صفحه اصلی 1</a></li>
                                 <li><a href="index-2.html">صفحه اصلی 2</a></li>
                                 <li><a href="index-3.html">صفحه اصلی 3</a></li>
                                 <li><a href="index-4.html">صفحه اصلی 4</a></li>
@@ -65,7 +65,7 @@
                                         <li><a href="my-account.html">حساب من</a></li>
                                         <li><a href="login-register.html">ورود - ثبت نام</a></li>
                                         <li><a href="about-us.html">درباره ما</a></li>
-                                        <li><a href="contact-us.html">تماس با ما</a></li>
+                                        <li><a href="{{route('contact')}}">تماس با ما</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -117,7 +117,7 @@
                                 <li><a href="blog-details-image.html">تصویر جزئیات وبلاگ</a></li>
                             </ul>
                         </li>
-                        <li><a href="contact-us.html">تماس با ما</a></li>
+                        <li><a href="{{route('contact')}}">تماس با ما</a></li>
                     </ul>
                 </nav>
                 <!-- mobile menu navigation end -->

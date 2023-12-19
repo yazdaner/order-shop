@@ -56,7 +56,7 @@
                     <!-- start logo area -->
                     <div class="col-lg-3">
                         <div class="logo">
-                            <a href="index-1.html">
+                            <a href="/">
                                 <img src="./assets/images/img/logo/logo.png" alt="">
                             </a>
                         </div>
@@ -288,9 +288,9 @@
                             <!-- main menu navbar start -->
                             <nav class="desktop-menu">
                                 <ul>
-                                    <li class="active"><a href="index-1.html">صفحه اصلی <i class="fa fa-angle-down"></i></a>
+                                    <li class="active"><a href="/">صفحه اصلی <i class="fa fa-angle-down"></i></a>
                                         <ul class="dropdown">
-                                            <li><a href="index-1.html">صفحه اصلی 1</a></li>
+                                            <li><a href="/">صفحه اصلی 1</a></li>
                                             <li><a href="index-2.html">صفحه اصلی 2</a></li>
                                             <li><a href="index-3.html">صفحه اصلی 3</a></li>
                                             <li><a href="index-4.html">صفحه اصلی 4</a></li>
@@ -329,7 +329,7 @@
                                                     <li><a href="my-account.html">حساب من</a></li>
                                                     <li><a href="login-register.html">ورود - ثبت نام</a></li>
                                                     <li><a href="about-us.html">درباره ما</a></li>
-                                                    <li><a href="contact-us.html">تماس با ما</a></li>
+                                                    <li><a href="{{route('contact')}}">تماس با ما</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -380,7 +380,7 @@
                                             <li><a href="blog-details-image.html">تصویر جزئیات وبلاگ</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="contact-us.html">تماس با ما</a></li>
+                                    <li><a href="{{route('contact')}}">تماس با ما</a></li>
                                 </ul>
                             </nav>
                             <!-- main menu navbar end -->
@@ -447,7 +447,7 @@
                 <div class="col-12">
                     <div class="mobile-main-header">
                         <div class="mobile-logo">
-                            <a href="index.html">
+                            <a href="/">
                                 <img src="./assets/images/img/logo/logo.png" alt="Brand Logo">
                             </a>
                         </div>

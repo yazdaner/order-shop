@@ -31,4 +31,10 @@ class ContactRequest extends FormRequest
             "message" => "required|string"
         ];
     }
+    public function attributes()
+    {
+        return [
+            "message" => "پیام",
+        ];
+    }
 }

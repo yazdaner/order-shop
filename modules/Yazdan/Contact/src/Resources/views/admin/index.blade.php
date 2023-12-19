@@ -44,10 +44,10 @@
 @endsection
 
 @section('style')
-    <link rel="stylesheet" href="{{asset('assets/css/modal.css')}}">
+    <link rel="stylesheet" href="{{asset('panel/css/modal.css')}}">
 @endsection
 @section('script')
-<script src="{{asset('assets/js/modal.js')}}"></script>
+<script src="{{asset('panel/js/modal.js')}}"></script>
 <script>
     function showComment(e,comment){
         e.preventDefault();

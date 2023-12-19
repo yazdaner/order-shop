@@ -10,5 +10,6 @@
     <link href="{{asset('assets/css/vendor.css')}}" rel="stylesheet">
 <!--    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">-->
     <link href="{{asset('./assets/css/style.css')}}" rel="stylesheet">
+    <link href="{{asset('./assets/css/custom.css')}}" rel="stylesheet">
     @yield('style')
 </head>
