@@ -1,6 +1,6 @@
-<link rel="stylesheet" href="{{asset('assets/css/jquery.toast.min.css')}}">
+<link rel="stylesheet" href="{{asset('panel/css/jquery.toast.min.css')}}">
 
-<script src="{{asset('/assets/js/jquery.toast.min.js')}}"></script>
+<script src="{{asset('/panel/js/jquery.toast.min.js')}}"></script>
 
 <script>
     @if (session()->has('feedbacks'))

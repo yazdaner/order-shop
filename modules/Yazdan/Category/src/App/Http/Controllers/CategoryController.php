@@ -3,7 +3,6 @@
 namespace Yazdan\Category\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Yazdan\Blog\App\Models\Blog;
 use Yazdan\Category\App\Http\Requests\CategoryRequest;
 use Yazdan\Category\App\Models\Category;
 use Yazdan\Category\Repositories\CategoryRepository;
@@ -16,8 +15,7 @@ class CategoryController extends Controller
     {
         $this->authorize('manage', Category::class);
         $categories = CategoryRepository::getAllPaginate(10);
-        $types = CategoryRepository::$types;
-        return view('Category::admin.index', compact('categories','types'));
+        return view('Category::admin.index', compact('categories'));
     }
 
     public function store(CategoryRequest $request)
@@ -31,10 +29,10 @@ class CategoryController extends Controller
     public function edit($categoryId)
     {
         $this->authorize('manage', Category::class);
-        $types = CategoryRepository::$types;
+
         $category = CategoryRepository::findById($categoryId);
         $parentCategories = CategoryRepository::getAllExceptById($categoryId);
-        return view('Category::admin.edit', compact('category', 'parentCategories','types'));
+        return view('Category::admin.edit', compact('category', 'parentCategories'));
     }
 
     public function update($categoryId, CategoryRequest $request)
@@ -50,13 +48,5 @@ class CategoryController extends Controller
         $this->authorize('manage', Category::class);
         CategoryRepository::delete($categoryId);
         return AjaxResponses::SuccessResponses();
-    }
-
-    // front
-
-    public function categoryShow(Category $category)
-    {
-        $blogs = Blog::where('category_id',$category->id)->paginate(12);
-        return view('Category::front.show', compact('category','blogs'));
     }
 }

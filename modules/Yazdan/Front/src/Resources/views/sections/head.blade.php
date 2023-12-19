@@ -5,10 +5,10 @@
     <meta name="description" content="meta description">
     <title>اوسترومی - الگوی تجارت الکترونیک چند منظوره </title>
     <!--=== Favicon ===-->
-    <link rel="shortcut icon" href="./assets/images/img/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{asset('./assets/images/img/favicon.ico')}}" type="image/x-icon" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"  rel="stylesheet">
-    <link href="./assets/css/vendor.css" rel="stylesheet">
+    <link href="{{asset('assets/css/vendor.css')}}" rel="stylesheet">
 <!--    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">-->
-    <link href="./assets/css/style.css" rel="stylesheet">
-
+    <link href="{{asset('./assets/css/style.css')}}" rel="stylesheet">
+    @yield('style')
 </head>

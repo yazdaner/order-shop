@@ -1,41 +1,41 @@
 @extends('Front::master')
 @section('content')
 <main>
-    <!-- hero slider area start -->
-    <div class="hero-slider-wrapper mt-30" style="direction: ltr">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="hero-slider-active slick-dot-style">
-                        <!-- slider item start -->
-                        <div class="hero-item-inner">
-                            <div class="hero-slider-item d-flex align-items-center bg-img" data-bg="{{asset('/assets/images/img/slider/home1-slide1.jpg')}}">
-                                <div class="hero-slider-content" style="direction: rtl;">
-                                    <h1>سبـد پـر از خریـد<br> محصولات میـوه و سبزیجات </h1>
-                                    <h4>غذای منجمد و سرد <br> میوه ها و سبزیجات تازه</h4>
-                                    <a href="shop.html" class="btn btn-slider">اکنون خرید کنید</a>
-                                </div>
+ <!-- hero slider area start -->
+ <div class="hero-slider-wrapper mt-30">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="hero-slider-active slick-dot-style">
+                    <!-- slider item start -->
+                    <div class="hero-item-inner">
+                        <div class="hero-slider-item d-flex align-items-center bg-img" data-bg="assets/images/img/slider/home1-slide1.jpg">
+                            <div class="hero-slider-content" style="direction: rtl;">
+                                <h1>سبـد پـر از خریـد<br> محصولات میـوه و سبزیجات </h1>
+                                <h4>غذای منجمد و سرد <br> میوه ها و سبزیجات تازه</h4>
+                                <a href="shop.html" class="btn btn-slider">اکنون خرید کنید</a>
                             </div>
                         </div>
-                        <!-- slider item start -->
-
-                        <!-- slider item start -->
-                        <div class="hero-item-inner">
-                            <div class="hero-slider-item d-flex align-items-center bg-img" data-bg="{{asset('/assets/images/img/slider/home1-slide2.jpg')}}">
-                                <div class="hero-slider-content" style="direction: rtl;">
-                                    <h1>پـذیرایی از خریـداران <br>صبحـانه ، ناهـار و شـام</h1>
-                                    <h4>بهترین مکان برای همه پاستاهای رویدادهای <br>بال، دنده، برگر لذیذ و غذاهای دریایی</h4>
-                                    <a href="shop.html" class="btn btn-slider">اکنون خرید کنید</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- slider item start -->
                     </div>
+                    <!-- slider item start -->
+
+                    <!-- slider item start -->
+                    <div class="hero-item-inner">
+                        <div class="hero-slider-item d-flex align-items-center bg-img" data-bg="assets/images/img/slider/home1-slide2.jpg">
+                            <div class="hero-slider-content" style="direction: rtl;">
+                                <h1>پـذیرایی از خریـداران <br>صبحـانه ، ناهـار و شـام</h1>
+                                <h4>بهترین مکان برای همه پاستاهای رویدادهای <br>بال، دنده، برگر لذیذ و غذاهای دریایی</h4>
+                                <a href="shop.html" class="btn btn-slider">اکنون خرید کنید</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- slider item start -->
                 </div>
             </div>
         </div>
     </div>
-    <!-- hero slider area end -->
+</div>
+<!-- hero slider area end -->
 
     <!-- banner feature area start -->
     <div class="banner-feature pt-30">
@@ -536,153 +536,154 @@
                     </div>
                 </div>
                 <!-- best seller item end -->
-
-                <!-- banner statistics start -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="banner-statistics-wrapper">
-                        <div class="banner-statistics">
-                            <div class="img-container">
-                                <a href="#">
-                                    <img src="./assets/images/img/banner/cms_1.1.jpg" alt="">
-                                </a>
-                            </div>
+                 <!-- best seller item start -->
+                 <div class="col-lg-3 col-md-6">
+                    <div class="feature-single-item">
+                        <div class="feature-product-title">
+                            <h3>بهترین فروشندگان</h3>
                         </div>
-                        <div class="banner-statistics">
-                            <div class="img-container">
-                                <a href="#">
-                                    <img src="./assets/images/img/banner/cms_1.2.jpg" alt="">
-                                </a>
+                        <div class="ht-slick-slider-wrap"style="direction: ltr">
+                            <div class="ht-slick-slider slick-row-15" data-slick='{"slidesToShow": 1, "slidesToScroll": 1, "prevArrow": ".prev-best", "nextArrow": ".next-best", "responsive":[{"breakpoint":768, "settings":{"slidesToShow": 2}}, {"breakpoint":480, "settings":{"slidesToShow": 1}}]}'>
+                                <!-- single item start -->
+                                <div class="feature-product-item">
+                                    <div class="product-thumb">
+                                        <a href="product-details.html">
+                                            <img src="./assets/images/img/product/product-3.jpg" alt="">
+                                        </a>
+                                        <div class="add-to-links">
+                                            <a href="cart.html" data-bs-toggle="tooltip" title="Add to Cart"><i class="ion-bag"></i></a>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span data-bs-toggle="tooltip" title="Quick View"><i class="ion-ios-eye-outline"></i></span></a>
+                                            <a href="wishlist.html" data-bs-toggle="tooltip" title="Wishlist"><i class="ion-android-favorite-outline"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="product-feature-content">
+                                        <div class="product-feature-content-inner">
+                                            <div class="price-box">
+                                                <span class="price-old"><del>60.000 </del></span>
+                                                <span class="price-regular">50.000 <span style="font-size: 18px">تومان</span></span>
+                                            </div>
+                                            <div class="product-badge">
+                                                <div class="product-label new">
+                                                    <span>جدید</span>
+                                                </div>
+                                                <div class="product-label discount">
+                                                    <span>-5%</span>
+                                                </div>
+                                            </div>
+                                            <div class="ratings">
+                                                <span><i class="ion-android-star"></i></span>
+                                                <span><i class="ion-android-star"></i></span>
+                                                <span><i class="ion-android-star"></i></span>
+                                                <span><i class="ion-android-star"></i></span>
+                                                <span><i class="ion-android-star"></i></span>
+                                            </div>
+                                            <div class="product-name">
+                                                <h5><a href="product-details.html">فلش مموری فول اچ دی 8 گیگ</a></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- single item end -->
+
+                                <!-- single item start -->
+                                <div class="feature-product-item">
+                                    <div class="product-thumb">
+                                        <a href="product-details.html">
+                                            <img src="./assets/images/img/product/product-1.jpg" alt="">
+                                        </a>
+                                        <div class="add-to-links">
+                                            <a href="cart.html" data-bs-toggle="tooltip" title="Add to Cart"><i class="ion-bag"></i></a>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span data-bs-toggle="tooltip" title="Quick View"><i class="ion-ios-eye-outline"></i></span></a>
+                                            <a href="wishlist.html" data-bs-toggle="tooltip" title="Wishlist"><i class="ion-android-favorite-outline"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="product-feature-content">
+                                        <div class="product-feature-content-inner">
+                                            <div class="price-box">
+                                                <span class="price-old"><del>60.000 </del></span>
+                                                <span class="price-regular">50.000 <span style="font-size: 18px">تومان</span></span>
+                                            </div>
+                                            <div class="product-badge">
+                                                <div class="product-label new">
+                                                    <span>جدید</span>
+                                                </div>
+                                                <div class="product-label discount">
+                                                    <span>-5%</span>
+                                                </div>
+                                            </div>
+                                            <div class="ratings">
+                                                <span><i class="ion-android-star"></i></span>
+                                                <span><i class="ion-android-star"></i></span>
+                                                <span><i class="ion-android-star"></i></span>
+                                                <span><i class="ion-android-star"></i></span>
+                                                <span><i class="ion-android-star"></i></span>
+                                            </div>
+                                            <div class="product-name">
+                                                <h5><a href="product-details.html">فلش مموری فول اچ دی 8 گیگ</a></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- single item end -->
+
+                                <!-- single item start -->
+                                <div class="feature-product-item">
+                                    <div class="product-thumb">
+                                        <a href="product-details.html">
+                                            <img src="./assets/images/img/product/product-2.jpg" alt="">
+                                        </a>
+                                        <div class="add-to-links">
+                                            <a href="cart.html" data-bs-toggle="tooltip" title="Add to Cart"><i class="ion-bag"></i></a>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span data-bs-toggle="tooltip" title="Quick View"><i class="ion-ios-eye-outline"></i></span></a>
+                                            <a href="wishlist.html" data-bs-toggle="tooltip" title="Wishlist"><i class="ion-android-favorite-outline"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="product-feature-content">
+                                        <div class="product-feature-content-inner">
+                                            <div class="price-box">
+                                                <span class="price-old"><del>60.000 </del></span>
+                                                <span class="price-regular">50.000 <span style="font-size: 18px">تومان</span></span>
+                                            </div>
+                                            <div class="product-badge">
+                                                <div class="product-label new">
+                                                    <span>جدید</span>
+                                                </div>
+                                                <div class="product-label discount">
+                                                    <span>-5%</span>
+                                                </div>
+                                            </div>
+                                            <div class="ratings">
+                                                <span><i class="ion-android-star"></i></span>
+                                                <span><i class="ion-android-star"></i></span>
+                                                <span><i class="ion-android-star"></i></span>
+                                                <span><i class="ion-android-star"></i></span>
+                                                <span><i class="ion-android-star"></i></span>
+                                            </div>
+                                            <div class="product-name">
+                                                <h5><a href="product-details.html">فلش مموری فول اچ دی 8 گیگ</a></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- single item end -->
                             </div>
+                            <!-- Start Slider Navigation -->
+                            <div class="ht-slick-nav">
+                                <button class="prev-best"><i class="ion-ios-arrow-left"></i></button>
+                                <button class="next-best right"><i class="ion-ios-arrow-right"></i></button>
+                            </div>
+                            <!-- End Slider Navigation -->
+                        </div>
+                        <div class="product-click-all">
+                            <a href="product-details.html">همه ورودی های جدید را ببینید<i class="ion-android-arrow-dropright"></i></a>
                         </div>
                     </div>
                 </div>
-                <!-- banner statistics end -->
+                <!-- best seller item end -->
             </div>
         </div>
     </div>
     <!-- feature categories area end -->
-
-    <!-- daily deals area start -->
-    <div class="daily-deal-area bg-gray pt-40 pb-40">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title-2">
-                        <h2>معامله روز</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="ht-slick-slider-wrap" style="direction: ltr">
-                        <div class="ht-slick-slider slick-row-15" data-slick='{"slidesToShow": 1, "slidesToScroll": 1, "speed": 1500, "arrows": true, "prevArrow": ".prev-deals", "nextArrow": ".next-deals"}'>
-                            <!-- deals single item start -->
-                            <div class="deals-item-inner">
-                                <div class="deals-item mb-30">
-                                    <div class="product-thumb">
-                                        <a href="product-details.html">
-                                            <img src="./assets/images/img/deals/deals-1.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="deals-content" style="direction: rtl">
-                                        <h6 class="manufacturer"><a href="#">مزرعه کازی</a></h6>
-                                        <h4 class="product-name"><a href="product-details.html">تازه در حالی که صید استیک اره ماهی به وفور تازه است</a></h4>
-                                        <div class="ratings">
-                                            <span><i class="ion-android-star"></i></span>
-                                            <span><i class="ion-android-star"></i></span>
-                                            <span><i class="ion-android-star"></i></span>
-                                            <span><i class="ion-android-star"></i></span>
-                                            <span><i class="ion-android-star"></i></span>
-                                        </div>
-                                        <div class="price-box">
-                                            <span class="price-old"><del>80.00 تومان</del></span>
-                                            <span class="price-regular">60.00 تومان</span>
-                                        </div>
-                                        <p class="text-hurryup">عجله کن! پایان پیشنهاد در:</p>
-                                        <div class="product-countdown" data-countdown="2023/12/20"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- deals single item end -->
-
-                            <!-- deals single item start -->
-                            <div class="deals-item-inner">
-                                <div class="deals-item mb-30">
-                                    <div class="product-thumb">
-                                        <a href="product-details.html">
-                                            <img src="./assets/images/img/deals/deals-2.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="deals-content"style="direction: rtl">
-                                        <h6 class="manufacturer"><a href="#">مزرعه کروگر</a></h6>
-                                        <h4 class="product-name"><a href="product-details.html">خانواده ماهی قزل آلا میگوی سفید پرورش یافته در مزرعه کروگر</a></h4>
-                                        <div class="ratings">
-                                            <span><i class="ion-android-star"></i></span>
-                                            <span><i class="ion-android-star"></i></span>
-                                            <span><i class="ion-android-star"></i></span>
-                                            <span><i class="ion-android-star"></i></span>
-                                            <span><i class="ion-android-star"></i></span>
-                                        </div>
-                                        <div class="price-box">
-                                            <span class="price-old"><del>80.00 تومان</del></span>
-                                            <span class="price-regular">60.00 تومان</span>
-                                        </div>
-                                        <p class="text-hurryup">عجله کن! پایان پیشنهاد در:</p>
-                                        <div class="product-countdown" data-countdown="2023/12/28"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- deals single item end -->
-                        </div>
-                        <!-- Start Slider Navigation -->
-                        <div class="ht-slick-nav">
-                            <button class="prev-deals"><i class="ion-ios-arrow-left"></i></button>
-                            <button class="next-deals right"><i class="ion-ios-arrow-right"></i></button>
-                        </div>
-                        <!-- End Slider Navigation -->
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <!-- banner statistics start -->
-                <div class="col-lg-4 col-md-4">
-                    <div class="banner-statistics">
-                        <div class="img-container">
-                            <a href="#">
-                                <img src="./assets/images/img/banner/cms_1.3.jpg" alt="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- banner statistics end -->
-
-                <!-- banner statistics start -->
-                <div class="col-lg-4 col-md-4">
-                    <div class="banner-statistics">
-                        <div class="img-container">
-                            <a href="#">
-                                <img src="./assets/images/img/banner/cms_1.4.jpg" alt="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- banner statistics end -->
-
-                <!-- banner statistics start -->
-                <div class="col-lg-4 col-md-4">
-                    <div class="banner-statistics">
-                        <div class="img-container">
-                            <a href="#">
-                                <img src="./assets/images/img/banner/cms_1.5.jpg" alt="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- banner statistics end -->
-            </div>
-        </div>
-    </div>
-    <!-- daily deals area end -->
 
     <!-- feature categories area start -->
     <div class="categories-features-area pt-40 pb-40">

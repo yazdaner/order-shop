@@ -1,9 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Yazdan\Category\Repositories\CategoryRepository;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateCategoriesTable extends Migration
 {
@@ -19,9 +18,9 @@ class CreateCategoriesTable extends Migration
 
             $table->foreignId('parent_id')->nullable();
             $table->foreign('parent_id')->on('categories')->references('id')->onDelete('SET NULL');
-            $table->string('type')->nullable();
+
             $table->string('title');
-            $table->string('slug')->unique();
+            $table->string('slug');
             $table->timestamps();
         });
     }

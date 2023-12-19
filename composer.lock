@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1121cfe8a3e4f18b72d2160e1ebeaccd",
+    "content-hash": "be379bd5c933bf11710234e907775f38",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -5987,7 +5987,7 @@
         },
         {
             "name": "yazdan/about",
-            "version": "dev-main",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./modules/Yazdan/About",
@@ -6012,7 +6012,7 @@
         },
         {
             "name": "yazdan/address",
-            "version": "dev-main",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./modules/Yazdan/Address",
@@ -6037,7 +6037,7 @@
         },
         {
             "name": "yazdan/blog",
-            "version": "dev-main",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./modules/Yazdan/Blog",
@@ -6062,7 +6062,7 @@
         },
         {
             "name": "yazdan/category",
-            "version": "dev-main",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./modules/Yazdan/Category",
@@ -6087,7 +6087,7 @@
         },
         {
             "name": "yazdan/comment",
-            "version": "dev-main",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./modules/Yazdan/Comment",
@@ -6112,7 +6112,7 @@
         },
         {
             "name": "yazdan/common",
-            "version": "dev-main",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./modules/Yazdan/Common",
@@ -6143,7 +6143,7 @@
         },
         {
             "name": "yazdan/contact",
-            "version": "dev-main",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./modules/Yazdan/Contact",
@@ -6167,8 +6167,33 @@
             }
         },
         {
+            "name": "yazdan/dashboard",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "./modules/Yazdan/Dashboard",
+                "reference": "e0d23367c5362d963cf6650e2d09d38c0540cfeb"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Yazdan\\Dashboard\\App\\Providers\\DashboardServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Yazdan\\Dashboard\\": "src"
+                }
+            },
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
             "name": "yazdan/front",
-            "version": "dev-main",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./modules/Yazdan/Front",
@@ -6193,7 +6218,7 @@
         },
         {
             "name": "yazdan/home",
-            "version": "dev-main",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./modules/Yazdan/Home",
@@ -6218,7 +6243,7 @@
         },
         {
             "name": "yazdan/media",
-            "version": "dev-main",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./modules/Yazdan/Media",
@@ -6243,7 +6268,7 @@
         },
         {
             "name": "yazdan/product",
-            "version": "dev-main",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./modules/Yazdan/Product",
@@ -6268,7 +6293,7 @@
         },
         {
             "name": "yazdan/role",
-            "version": "dev-main",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./modules/Yazdan/RolePermissions",
@@ -6296,7 +6321,7 @@
         },
         {
             "name": "yazdan/search",
-            "version": "dev-main",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./modules/Yazdan/Search",
@@ -6321,7 +6346,7 @@
         },
         {
             "name": "yazdan/setting",
-            "version": "dev-main",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./modules/Yazdan/Setting",
@@ -6346,7 +6371,7 @@
         },
         {
             "name": "yazdan/slider",
-            "version": "dev-main",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./modules/Yazdan/Slider",
@@ -6371,7 +6396,7 @@
         },
         {
             "name": "yazdan/user",
-            "version": "dev-main",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./modules/Yazdan/User",
@@ -8846,6 +8871,7 @@
         "yazdan/comment": 20,
         "yazdan/common": 20,
         "yazdan/contact": 20,
+        "yazdan/dashboard": 20,
         "yazdan/front": 20,
         "yazdan/home": 20,
         "yazdan/media": 20,
