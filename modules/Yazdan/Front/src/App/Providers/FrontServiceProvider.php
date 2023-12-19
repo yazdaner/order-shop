@@ -8,10 +8,8 @@ use Yazdan\Slider\App\Models\Slider;
 use Illuminate\Support\Facades\Route;
 use Yazdan\Setting\App\Models\Setting;
 use Illuminate\Support\ServiceProvider;
-use Yazdan\Category\App\Models\Category;
 use Yazdan\Slider\Repositories\SliderRepository;
 use Yazdan\Category\Repositories\CategoryRepository;
-use Yazdan\Course\App\Models\Course;
 use Yazdan\Product\App\Models\Product;
 
 class FrontServiceProvider extends ServiceProvider
@@ -27,6 +25,17 @@ class FrontServiceProvider extends ServiceProvider
             $sliders = Slider::where('type', SliderRepository::TYPE_MAIN)->where('status', true)->orderBy('priority')->get();
             $view->with(compact('sliders'));
         });
+
+        view()->composer('Front::sections.middleBanner', function ($view) {
+            $banner = Slider::where('type', SliderRepository::TYPE_INDEX_MIDDLE)->where('status', true)->orderBy('priority')->first();
+            $view->with(compact('banner'));
+        });
+
+        view()->composer('Front::sections.bottomBanner', function ($view) {
+            $banner = Slider::where('type', SliderRepository::TYPE_INDEX_BOTTOM)->where('status', true)->orderBy('priority')->first();
+            $view->with(compact('banner'));
+        });
+
 
         view()->composer(['Front::sections.footer', 'Home::sections.sidebar', 'Contact::front.index', 'Blog::front.show'], function ($view) {
             $setting = Setting::first();

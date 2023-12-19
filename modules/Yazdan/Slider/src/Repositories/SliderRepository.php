@@ -7,15 +7,19 @@ use Yazdan\Slider\App\Models\Slider;
 class SliderRepository
 {
     const TYPE_MAIN = 'main';
+    const TYPE_INDEX_MIDDLE = 'index middle';
+    const TYPE_INDEX_BOTTOM = 'index bottom';
 
-    static $types = [self::TYPE_MAIN];
-
+    static $types = [
+        self::TYPE_MAIN,
+        self::TYPE_INDEX_MIDDLE,
+        self::TYPE_INDEX_BOTTOM
+    ];
 
     public static function all()
     {
         return Slider::query()->orderBy("priority")->get();
     }
-
 
     public static function findById($id)
     {

@@ -1,42 +1,8 @@
 @extends('Front::master')
 @section('content')
 <main>
- <!-- hero slider area start -->
- <div class="hero-slider-wrapper mt-30">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="hero-slider-active slick-dot-style">
-                    <!-- slider item start -->
-                    <div class="hero-item-inner">
-                        <div class="hero-slider-item d-flex align-items-center bg-img" data-bg="assets/images/img/slider/home1-slide1.jpg">
-                            <div class="hero-slider-content" style="direction: rtl;">
-                                <h1>سبـد پـر از خریـد<br> محصولات میـوه و سبزیجات </h1>
-                                <h4>غذای منجمد و سرد <br> میوه ها و سبزیجات تازه</h4>
-                                <a href="shop.html" class="btn btn-slider">اکنون خرید کنید</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- slider item start -->
 
-                    <!-- slider item start -->
-                    <div class="hero-item-inner">
-                        <div class="hero-slider-item d-flex align-items-center bg-img" data-bg="assets/images/img/slider/home1-slide2.jpg">
-                            <div class="hero-slider-content" style="direction: rtl;">
-                                <h1>پـذیرایی از خریـداران <br>صبحـانه ، ناهـار و شـام</h1>
-                                <h4>بهترین مکان برای همه پاستاهای رویدادهای <br>بال، دنده، برگر لذیذ و غذاهای دریایی</h4>
-                                <a href="shop.html" class="btn btn-slider">اکنون خرید کنید</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- slider item start -->
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- hero slider area end -->
-
+    @include('Front::sections.slider')
     <!-- banner feature area start -->
     <div class="banner-feature pt-30">
         <div class="container">
@@ -1490,23 +1456,7 @@
     </div>
     <!-- feature categories area end -->
 
-    <!-- banner statistics start -->
-    <div class="banner-statistics-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="banner-statistics">
-                        <div class="img-container">
-                            <a href="#">
-                                <img src="./assets/images/img/banner/cms_1.6.jpg" alt="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- banner statistics end -->
+    @include('Front::sections.middleBanner')
 
     <!-- categories area start -->
     <div class="categories-area pt-40 pb-40">
@@ -1961,23 +1911,8 @@
     </div>
     <!-- product feature end -->
 
-    <!-- banner statistics start -->
-    <div class="banner-statistics-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="banner-statistics">
-                        <div class="img-container">
-                            <a href="#">
-                                <img src="./assets/images/img/banner/cms_1.7.jpg" alt="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- banner statistics end -->
+    @include('Front::sections.bottomBanner')
+
 
     <!-- brand area start -->
     <div class="brand-area pt-40 pb-40" style="direction: ltr">

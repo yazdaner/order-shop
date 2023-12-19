@@ -3,7 +3,7 @@
     <div class="file-upload">
         <div class="i-file-upload">
             <span>{{$placeholder}}</span>
-            <input type="file" class="file-upload" id="files" name="{{$name}}" @if($multiple) multiple @endif/>
+            <input type="file" class="file-upload" id="files" name="{{$name}}"/>
         </div>
         <span class="filesize"></span>
         @if (isset($value))
