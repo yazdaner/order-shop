@@ -4,3 +4,9 @@
     font-size:13px;
     color:#dc3545;
 }
+
+.form-select{
+    padding-top: 13px;
+    border-radius: 0;
+    padding-bottom: 13;
+}
