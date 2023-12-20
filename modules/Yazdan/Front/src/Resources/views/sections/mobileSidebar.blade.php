@@ -64,7 +64,7 @@
                                     <ul class="dropdown">
                                         <li><a href="my-account.html">حساب من</a></li>
                                         <li><a href="login-register.html">ورود - ثبت نام</a></li>
-                                        <li><a href="about-us.html">درباره ما</a></li>
+                                        <li><a href="{{route('about')}}">درباره ما</a></li>
                                         <li><a href="{{route('contact')}}">تماس با ما</a></li>
                                     </ul>
                                 </li>
