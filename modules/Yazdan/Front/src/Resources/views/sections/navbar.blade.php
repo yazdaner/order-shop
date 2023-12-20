@@ -17,7 +17,7 @@
                                     حساب کاربری
                                     <i class="fa fa-angle-down"></i>
                                     <ul class="dropdown-list account-list">
-                                        <li><a href="my-account.html">حساب کاربری</a></li>
+                                        <li><a href="{{route('home')}}">حساب کاربری</a></li>
                                         <li><a href="login-register.html">
                                             ثبت نام ورود</a></li>
                                         <li><a href="wishlist.html">لیست علاقه مندیها</a></li>
@@ -326,7 +326,7 @@
                                             </li>
                                             <li class="mega-title"><a href="#">ستون 04</a>
                                                 <ul>
-                                                    <li><a href="my-account.html">حساب من</a></li>
+                                                    <li><a href="{{route('home')}}">حساب من</a></li>
                                                     <li><a href="login-register.html">ورود - ثبت نام</a></li>
                                                     <li><a href="{{route('about')}}">درباره ما</a></li>
                                                     <li><a href="{{route('contact')}}">تماس با ما</a></li>
