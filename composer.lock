@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "be379bd5c933bf11710234e907775f38",
+    "content-hash": "00c322e015f309cb6f9b082a78230744",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -6267,6 +6267,34 @@
             }
         },
         {
+            "name": "yazdan/mobile-auth",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "./modules/Yazdan/MobileAuth",
+                "reference": "47a83bc642b4b5027f0d603155e4621d1fc861b2"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Yazdan\\MobileAuth\\Providers\\MobileAuthServiceProvider"
+                    ],
+                    "aliases": {
+                        "MobileAuth": "Yazdan\\MobileAuth\\Facade\\MobileAuthFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Yazdan\\MobileAuth\\": "src"
+                }
+            },
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
             "name": "yazdan/product",
             "version": "dev-master",
             "dist": {
@@ -8875,6 +8903,7 @@
         "yazdan/front": 20,
         "yazdan/home": 20,
         "yazdan/media": 20,
+        "yazdan/mobile-auth": 20,
         "yazdan/product": 20,
         "yazdan/role": 20,
         "yazdan/search": 20,
