@@ -25,6 +25,7 @@
         "yazdan/product": "dev-master",
         "yazdan/role": "dev-master",
         "yazdan/search": "dev-master",
+        "yazdan/seller": "dev-master",
         "yazdan/setting": "dev-master",
         "yazdan/slider": "dev-master",
         "yazdan/user": "dev-master"
@@ -122,6 +123,10 @@
         {
             "type": "path",
             "url": "./modules/Yazdan/MobileAuth"
+        },
+        {
+            "type": "path",
+            "url": "./modules/Yazdan/Seller"
         }
     ],
     "scripts": {
