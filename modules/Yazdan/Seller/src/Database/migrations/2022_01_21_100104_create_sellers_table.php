@@ -25,15 +25,13 @@ class CreateSellersTable extends Migration
 
             $table->text("address");
 
+            $table->string('national_number', 10);
+            $table->string('mobile', 11);
+            $table->string('account_number', 16);
 
             $table->text("description")->nullable();
-            $table->string("link")->nullable();
-            $table->boolean("status")->default(true);
 
-            $table->foreignId('media_id')->nullable();
-            $table->foreign('media_id')->references('id')->on('media')->onDelete('set null');
-
-            $table->enum("type", SellerRepository::$types);
+            $table->boolean("status")->default(false);
 
             $table->timestamps();
         });

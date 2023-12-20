@@ -1,5 +1,6 @@
 <?php
 
+use Yazdan\Media\App\Models\Gallery;
 use Yazdan\Media\Services\MediaFileService;
 
 
@@ -47,6 +48,18 @@ function destroyImages($model)
         }
     }
 }
+
+function addImagesGallery($model,$data) :void
+{
+    foreach($data->images_id as $image_id){
+        Gallery::create([
+            'gallerisable_id' => $model->id,
+            'gallerisable_type' => get_class($model),
+            'media_id' => $image_id,
+        ]);
+    }
+}
+
 
 function destroyVideo($model)
 {

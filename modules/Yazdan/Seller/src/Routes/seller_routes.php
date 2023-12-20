@@ -3,12 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use Yazdan\Seller\App\Http\Controllers\SellerController;
 
-Route::prefix('admin-panel')->name('admin.')->middleware([
+Route::prefix('admin-panel/sellers')->name('admin.sellers.')->middleware([
     'auth',
     'verified'
 ])->group(function () {
-    Route::resource('sellers', SellerController::class)->except([
-        'index'
-    ]);
-    providerGetRoute('/sellers',SellerController::class,'index','sellers.index');
+    providerGetRoute('/',SellerController::class,'index','index');
+    Route::delete('delete/{seller}',[SellerController::class,'destroy'])->name('delete');
 });

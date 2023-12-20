@@ -126,7 +126,7 @@ class ProductController extends Controller
             DB::beginTransaction();
 
             $request = storeImages($request);
-            ProductRepository::addImagesGallery($product, $request);
+            addImagesGallery($product, $request);
 
             DB::commit();
         } catch (\Exception $ex) {
@@ -138,7 +138,6 @@ class ProductController extends Controller
         newFeedbacks();
         return back();
     }
-
 
     //front
 

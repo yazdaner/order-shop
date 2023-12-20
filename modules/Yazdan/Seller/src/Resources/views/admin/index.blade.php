@@ -1,11 +1,11 @@
 @extends('Dashboard::master')
 @section('breadcrumb')
-<li><a href="{{ route('admin.sliders.index') }}" title="اسلاید ها">اسلاید ها</a></li>
+<li><a href="{{ route('admin.sellers.index') }}" title="اسلاید ها">اسلاید ها</a></li>
 @endsection
 @section('content')
 <div class="main-content padding-0 users">
     <div class="row no-gutters">
-        <div class="col-8 margin-left-10 margin-bottom-15 border-radius-3">
+        <div class="col-12 margin-left-10 margin-bottom-15 border-radius-3">
             <p class="box__title">اسلاید ها</p>
             <div class="table__box">
                 <table class="table">
@@ -21,19 +21,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($sliders as $slider)
+                        @foreach($sellers as $seller)
                         <tr role="row" class="">
-                            <td><a href="">{{ $slider->id }}</a></td>
-                            <td width="80"><img src="{{ $slider->getImage(60) }}" alt="" width="80"></td>
-                            <td>{{ $slider->priority }}</td>
-                            <td>{{ $slider->link }}</td>
-                            <td>{{ __($slider->type) }}</td>
-                            <td>{{ $slider->status == 1 ? 'فعال' : 'غیرفعال' }}</td>
+                            <td><a href="">{{ $seller->id }}</a></td>
+
                             <td>
                                 <a href=""
-                                    onclick="deleteItem(event, '{{ route('admin.sliders.destroy', $slider->id) }}')"
+                                    onclick="deleteItem(event, '{{ route('admin.sellers.destroy', $seller->id) }}')"
                                     class="item-delete mlg-15" title="حذف"></a>
-                                <a href="{{ route('admin.sliders.edit',  $slider->id) }}" class="item-edit "
+                                <a href="{{ route('admin.sellers.edit',  $seller->id) }}" class="item-edit "
                                     title="ویرایش"></a>
                             </td>
                         </tr>
@@ -42,9 +38,6 @@
                     </tbody>
                 </table>
             </div>
-        </div>
-        <div class="col-4 bg-white p-0">
-            @include('Slider::admin.create')
         </div>
     </div>
 </div>

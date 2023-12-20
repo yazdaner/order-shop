@@ -92,16 +92,4 @@ class ProductRepository
         ]);
     }
 
-
-    public static function addImagesGallery($model,$data)
-    {
-        foreach($data->images_id as $image_id){
-            Gallery::create([
-                'gallerisable_id' => $model->id,
-                'gallerisable_type' => get_class($model),
-                'media_id' => $image_id,
-            ]);
-        }
-    }
-
 }

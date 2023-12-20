@@ -7,12 +7,6 @@
     <x-input type="text" name="title"  placeholder="عنوان"/>
     <x-text-area name="description" placeholder="توضیحات" />
 
-    <p class="box__title margin-bottom-15">نوع اسلاید</p>
-    <select name="type">
-        @foreach ($types as $type)
-            <option value="{{$type}}">@lang($type)</option>
-        @endforeach
-    </select>
 
     <p class="box__title margin-bottom-15">وضعیت نمایش</p>
     <select name="status" id="status">
