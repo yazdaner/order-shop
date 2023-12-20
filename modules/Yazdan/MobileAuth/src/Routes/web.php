@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Yazdan\MobileAuth\App\Controllers\MobileAuthController;
 
-Route::get('/mobile-auth',function() {
-    echo 'mobile auth';
-})->name('mobile-auth');
+Route::get('/mobile-auth',[MobileAuthController::class,'test'])->name('mobile-auth');

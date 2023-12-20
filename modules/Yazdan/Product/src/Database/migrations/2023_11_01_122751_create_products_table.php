@@ -16,13 +16,16 @@ return new class extends Migration
             $table->id();
 
             $table->foreignId('category_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+
             $table->foreignId('media_id')->nullable();
             $table->foreign('media_id')->references('id')->on('media')->onDelete('set null');
 
-            $table->string('title');
+            $table->string('title')->unique();
             $table->string('slug')->unique();
+
             $table->text('description')->nullable();
             $table->text('body')->nullable();
+            
             $table->enum('status',ProductRepository::$statuses);
 
             $table->bigInteger('views')->unsigned()->default(0)->index();
