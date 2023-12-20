@@ -2,24 +2,20 @@
 
 namespace Yazdan\Product\App\Models;
 
+use Yazdan\Common\Traits\HasView;
 use Yazdan\Media\Traits\HasMedia;
-use Yazdan\Media\App\Models\Gallery;
+use Yazdan\Media\Traits\HasGallery;
 use Yazdan\Comment\Trait\HasComments;
 use Illuminate\Database\Eloquent\Model;
 use Yazdan\Category\Traits\HasCategory;
 
 class Product extends Model
 {
-    use HasComments,HasMedia,HasCategory;
+    use HasComments,HasMedia,HasCategory,HasGallery,HasView;
 
     protected $table = 'products';
     protected $guarded = [];
     protected $appends = ['quantity_check', 'sale_check', 'price_check'];
-
-    public function galleries()
-    {
-        return $this->morphMany(Gallery::class, 'gallerisable');
-    }
 
     public function variations()
     {
@@ -29,11 +25,6 @@ class Product extends Model
     public function path()
     {
         return route('products.show',$this->slug);
-    }
-
-    public function incrementReadCount() {
-        $this->views++;
-        return $this->save();
     }
 
     public function getSaleCheckAttribute()

@@ -17,8 +17,15 @@ class CreateSellersTable extends Migration
         Schema::create('sellers', function (Blueprint $table) {
             $table->id();
 
-            $table->float("priority")->nullable();
-            $table->string("title")->nullable();
+            $table->foreignId('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
+            $table->string("shop_name");
+            $table->string("seller_name");
+
+            $table->text("address");
+
+
             $table->text("description")->nullable();
             $table->string("link")->nullable();
             $table->boolean("status")->default(true);

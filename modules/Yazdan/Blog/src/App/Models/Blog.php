@@ -8,28 +8,24 @@ use Yazdan\Comment\Trait\HasComments;
 use Illuminate\Database\Eloquent\Model;
 use Yazdan\Category\Traits\HasCategory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Yazdan\Common\Traits\HasView;
 
 class Blog extends Model
 {
-    use HasFactory,HasComments,HasCategory,HasMedia;
+    use HasFactory,HasComments,HasCategory,HasMedia,HasView;
 
     protected $table = 'blogs';
     protected $guarded = [];
 
+    public function path()
+    {
+        return route('blogs.show',$this->slug);
+    }
 
     public function user()
     {
         return $this->belongsTo(User::class,'user_id');
     }
 
-    public function incrementReadCount() {
-        $this->views++;
-        return $this->save();
-    }
-
-    public function path()
-    {
-        return route('blogs.show',$this->slug);
-    }
 }
 
