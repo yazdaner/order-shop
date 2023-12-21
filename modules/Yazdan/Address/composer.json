@@ -11,5 +11,8 @@
                 "Yazdan\\Address\\App\\Providers\\AddressServiceProvider"
             ]
         }
+    },
+    "require": {
+        "anetwork/validation": "^2.3"
     }
 }

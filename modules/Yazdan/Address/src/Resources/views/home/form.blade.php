@@ -2,31 +2,17 @@
     @csrf
     <div class="row">
         <div class="col-lg-6">
-            <div class="single-input-item">
-                <label for="name" class="required">نام و نام خانوادگی</label>
-                <input type="text" id="name" name="name" placeholder="نام و نام خانوادگی"
-                    value="{{$address->name ?? old('name')}}" />
-            </div>
-            <x-input-home name="name"/>
+            <x-input-home name="name" label="نام و نام خانوادگی" value="{{$address->name ?? old('name')}}"/>
         </div>
         <div class="col-lg-6">
-            <div class="single-input-item">
-                <label for="phone" class="required">شماره تماس</label>
-                <input type="tel" id="phone" name="phone" placeholder="شماره تماس"
-                    value="{{$address->phone ?? old('phone')}}" />
-            </div>
+            <x-input-home type="tel" name="phone" label="شماره تماس" value="{{$address->phone ?? old('phone')}}"/>
         </div>
     </div>
-    <div class="single-input-item">
-        <label for="postal_code" class="required">کد پستی</label>
-        <input type="number" id="postal_code" name="postal_code" placeholder="کد پستی"
-            value="{{$address->postal_code ?? old('postal_code')}}" />
-    </div>
-    <div class="single-input-item">
-        <label for="address" class="required">آدرس</label>
-        <textarea name="address" id="address" placeholder="آدرس"
-            rows="4">{{$address->address ?? old('address')}}</textarea>
-    </div>
+
+    <x-input-home type="number" name="postal_code" label="کد پستی" value="{{$address->postal_code ?? old('postal_code')}}"/>
+
+    <x-textarea-home name="address" label="آدرس" value="{{$address->address ?? old('address')}}" />
+
     <div class="row">
         <div class="col-lg-6">
             <div class="single-input-item">
@@ -52,6 +38,7 @@
             </div>
         </div>
     </div>
+
     <div class="single-input-item">
         <button type="submit" class="btn btn__bg">ثبت</button>
     </div>
