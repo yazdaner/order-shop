@@ -28,6 +28,12 @@ class SellerController extends Controller
 
     // front
 
+    // index
+    public function sellersForm()
+    {
+        return view("Seller::home.index");
+    }
+
     public function store(SellerRequest $request)
     {
         SellerRepository::store($request);

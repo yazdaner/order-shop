@@ -24,7 +24,6 @@
                         @foreach($sellers as $seller)
                         <tr role="row" class="">
                             <td><a href="">{{ $seller->id }}</a></td>
-
                             <td>
                                 <a href=""
                                     onclick="deleteItem(event, '{{ route('admin.sellers.destroy', $seller->id) }}')"
@@ -34,7 +33,6 @@
                             </td>
                         </tr>
                         @endforeach
-
                     </tbody>
                 </table>
             </div>

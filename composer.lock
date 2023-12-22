@@ -6325,13 +6325,13 @@
             "dist": {
                 "type": "path",
                 "url": "./modules/Yazdan/MobileAuth",
-                "reference": "47a83bc642b4b5027f0d603155e4621d1fc861b2"
+                "reference": "808708557b0a6dc3426653f8700db63eff5acaf0"
             },
             "type": "library",
             "extra": {
                 "laravel": {
                     "providers": [
-                        "Yazdan\\MobileAuth\\Providers\\MobileAuthServiceProvider"
+                        "Yazdan\\MobileAuth\\App\\Providers\\MobileAuthServiceProvider"
                     ],
                     "aliases": {
                         "MobileAuth": "Yazdan\\MobileAuth\\Facade\\MobileAuthFacade"

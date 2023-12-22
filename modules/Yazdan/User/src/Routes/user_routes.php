@@ -52,8 +52,8 @@ Route::post('/email/resend', [VerificationController::class, 'resend'])->name('v
 
 // login
 
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login'])->name('login');
+// Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+// Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 // logout
 

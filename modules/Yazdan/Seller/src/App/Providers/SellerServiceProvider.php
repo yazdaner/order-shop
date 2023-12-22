@@ -25,11 +25,18 @@ class SellerServiceProvider extends ServiceProvider
 
     public function boot()
     {
+        // admin
         config()->set('sidebar.items.sellers', [
             'icon' => 'i-sellers',
             'url' => route('admin.sellers.index'),
-            'title' => 'اسلایدر',
-            'permission' => PermissionRepository::PERMISSION_MANAGE_SLIDER,
+            'title' => 'فروشنده',
+            'permission' => PermissionRepository::PERMISSION_MANAGE_SELLER,
+        ]);
+
+        config()->set('sidebarHome.items.sellers', [
+            'icon' => 'uil-sellers',
+            'url' => route('sellers'),
+            'title' => 'فروشنده'
         ]);
     }
 }

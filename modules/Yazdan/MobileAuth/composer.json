@@ -8,7 +8,7 @@
     "extra" : {
         "laravel" : {
             "providers" : [
-                "Yazdan\\MobileAuth\\Providers\\MobileAuthServiceProvider"
+                "Yazdan\\MobileAuth\\App\\Providers\\MobileAuthServiceProvider"
             ],
             "aliases": {
                 "MobileAuth": "Yazdan\\MobileAuth\\Facade\\MobileAuthFacade"

@@ -22,6 +22,7 @@ class UserRepository
     const USER_SUPER_ADMIN = [
         'username' => 'admin',
         'email' => 'a@a.com',
+        'mobile' => '09123456789',
         'password' => '1234',
         'role' => RoleRepository::ROLE_SUPER_ADMIN
     ];
