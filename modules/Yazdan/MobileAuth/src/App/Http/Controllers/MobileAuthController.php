@@ -25,13 +25,21 @@ class MobileAuthController extends Controller
 
     public function authCheck(MobileAuthRequest $request)
     {
-        $user = User::where('mobile',$request->mobile)->first();
+        $mobile = $request->mobile;
+        $user = User::where('mobile',$mobile)->first();
 
-        if(!$user){
-            return redirect()->back()->withErrors([
-                'mobile' => 'شماره مورد نظر یافت نشد'
+        if(!$user)
+        {
+            return redirect()->route('otp-login')->with([
+                'mobile' => $mobile,
+                'can_login_with_password' => false,
             ]);
         }
-        dd($user);
+        if(!$user->password ||  $user->attempts_left <= 0 || $user->must_login_with_otp)
+        {
+            return redirect()->route('otp-login')->with('mobile',$mobile);
+        }else{
+            return redirect()->route('password-login')->with('mobile',$mobile);
+        }
     }
 }

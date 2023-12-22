@@ -29,7 +29,7 @@
                                 <div class="single-input-item mb-3">
                                     <label for="mobile" class="required">شماره موبایل</label>
                                     <input type="tel" id="mobile" name="mobile" placeholder="شماره موبایل"
-                                        value="{{old('mobile')}}"/>
+                                        value="{{session()->get('mobile','error')}}" disabled/>
                                 </div>
                                 <div class="single-input-item mb-3">
                                     <label for="password" class="required">رمز یکبار مصرف</label>
@@ -38,7 +38,9 @@
                                 </div>
 
                                 <div class="single-input-item d-flex justify-content-between align-items-center">
-                                    <a href="{{route('password-login')}}">ورود با گذرواژه</a>
+                                    @if (session()->get('can_login_with_password',true))
+                                        <a href="{{route('password-login')}}">ورود با گذرواژه</a>
+                                    @endif
                                     <button class="btn btn__bg">ورود</button>
                                 </div>
                             </form>

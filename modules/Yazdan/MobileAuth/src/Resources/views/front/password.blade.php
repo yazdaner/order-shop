@@ -29,7 +29,7 @@
                                 <div class="single-input-item mb-3">
                                     <label for="mobile" class="required">شماره موبایل</label>
                                     <input type="tel" id="mobile" name="mobile" placeholder="شماره موبایل"
-                                        value="{{old('mobile')}}"/>
+                                        value="{{session()->get('mobile','error')}}" disabled />
                                 </div>
                                 <div class="single-input-item mb-3">
                                     <label for="password" class="required">گذرواژه</label>
