@@ -2,9 +2,9 @@
 
 namespace Yazdan\MobileAuth\App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Yazdan\MobileAuth\App\Http\Requests\MobileAuthRequest;
 
 class MobileAuthController extends Controller
 {
@@ -23,9 +23,15 @@ class MobileAuthController extends Controller
         return view('MobileAuth::front.password');
     }
 
-    public function authCheck(Request $request)
+    public function authCheck(MobileAuthRequest $request)
     {
-        $user = User::where('mobile',$request->mobile)->firstOrFail();
+        $user = User::where('mobile',$request->mobile)->first();
+
+        if(!$user){
+            return redirect()->back()->withErrors([
+                'mobile' => 'شماره مورد نظر یافت نشد'
+            ]);
+        }
         dd($user);
     }
 }

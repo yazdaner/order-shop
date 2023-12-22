@@ -2,6 +2,7 @@
 
 namespace Yazdan\MobileAuth\App\Providers;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Yazdan\MobileAuth\Services\MobileAuthService;
 
@@ -25,7 +26,8 @@ class MobileAuthServiceProvider extends ServiceProvider
 
     private function _loadRoutes()
     {
-        return $this->loadRoutesFrom(__DIR__ . '/../../Routes/web.php');
+        return Route::middleware('web')
+            ->group(__DIR__ . '/../../Routes/web.php');
     }
 
     private function _loadViews()

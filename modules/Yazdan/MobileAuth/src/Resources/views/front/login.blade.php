@@ -17,28 +17,25 @@
             </div>
         </div>
     </div>
+
     <div class="login-register-wrapper pt-40 pb-40">
         <div class="container">
             <div class="member-area-from-wrap">
                 <div class="row justify-content-center">
-                    <!-- Login Content Start -->
                     <div class="col-lg-6">
                         <div class="login-reg-form-wrap">
                             <h2 class="text-center">ورود</h2>
                             <form action="{{route('authCheck')}}" method="post">
                                 @csrf
-                                <div class="single-input-item mb-3">
-                                    <label for="mobile" class="required">شماره موبایل</label>
-                                    <input type="tel" id="mobile" name="mobile" placeholder="شماره موبایل"
-                                        value="{{old('mobile')}}"/>
-                                </div>
+
+                                <x-input-home type="tel" name="mobile" label="شماره موبایل" />
+
                                 <div class="single-input-item">
                                     <button class="btn btn__bg" type="submit">تایید شماره موبایل</button>
                                 </div>
                             </form>
                         </div>
                     </div>
-                    <!-- Login Content End -->
                 </div>
             </div>
         </div>
