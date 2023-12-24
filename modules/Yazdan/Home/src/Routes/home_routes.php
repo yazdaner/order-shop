@@ -5,8 +5,7 @@ use Yazdan\Home\App\Http\Controllers\HomeController;
 
 Route::group([
     'middleware' => [
-        'auth',
-        'verified'
+        'auth'
     ],
 ],function(){
 

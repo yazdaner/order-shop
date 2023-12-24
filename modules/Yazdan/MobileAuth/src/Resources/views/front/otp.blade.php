@@ -21,20 +21,22 @@
         <div class="container">
             <div class="member-area-from-wrap">
                 <div class="row justify-content-center">
-                    <!-- Login Content Start -->
                     <div class="col-lg-6">
                         <div class="login-reg-form-wrap">
                             <h2 class="text-center">ورود با رمز یکبار مصرف</h2>
-                            <form action="#" method="post">
+                            <form action="{{route('otp-check')}}" method="post">
+                                @csrf
                                 <div class="single-input-item mb-3">
                                     <label for="mobile" class="required">شماره موبایل</label>
                                     <input type="tel" id="mobile" name="mobile" placeholder="شماره موبایل"
-                                        value="{{session()->get('mobile','error')}}" disabled/>
+                                        value="{{session()->get('mobile',old('mobile'))}}" readonly/>
+                                    <x-validation-error field="mobile" />
+
                                 </div>
                                 <div class="single-input-item mb-3">
-                                    <label for="password" class="required">رمز یکبار مصرف</label>
-                                    <input type="password" id="password" name="password" placeholder="گذرواژه"
-                                        value="{{old('password')}}"/>
+                                    <label for="otp" class="required">رمز یکبار مصرف</label>
+                                    <input type="otp" id="otp" name="otp" placeholder="رمز یکبار مصرف" />
+                                    <x-validation-error field="otp" />
                                 </div>
 
                                 <div class="single-input-item d-flex justify-content-between align-items-center">
@@ -46,7 +48,6 @@
                             </form>
                         </div>
                     </div>
-                    <!-- Login Content End -->
                 </div>
             </div>
         </div>

@@ -101,7 +101,6 @@ class UserController extends Controller
 
     public function profile()
     {
-        $this->authorize('profile',User::class);
         return view('User::profile.index');
     }
 

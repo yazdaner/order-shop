@@ -10,20 +10,19 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Yazdan\Address\App\Models\Address;
+use Yazdan\MobileAuth\Traits\HasMobileAuth;
 use Yazdan\User\App\Notifications\VerifyMailNotification;
 use Yazdan\User\App\Notifications\ResetPasswordEmailCodeNotification;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles,HasMedia;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, HasMedia, HasMobileAuth;
 
     protected $fillable = [
         'name',
         'username',
         'email',
         'password',
-        'mobile',
-        'key',
     ];
 
     protected $hidden = [
@@ -63,7 +62,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function address()
     {
-        return $this->hasOne(Address::class,'user_id');
+        return $this->hasOne(Address::class, 'user_id');
     }
-
 }

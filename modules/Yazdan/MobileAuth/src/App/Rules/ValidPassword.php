@@ -1,40 +1,17 @@
 <?php
 
-namespace Yazdan\User\App\Rules;
+namespace Yazdan\MobileAuth\App\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
+use Closure;
+use Illuminate\Contracts\Validation\ValidationRule;
 
-class ValidPassword implements Rule
+class ValidMobile implements ValidationRule
 {
-    /**
-     * Create a new rule instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
 
-    /**
-     * Determine if the validation rule passes.
-     *
-     * @param  string  $attribute
-     * @param  mixed  $value
-     * @return bool
-     */
-    public function passes($attribute, $value)
+    public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        return preg_match('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{6,}$/', $value);
-    }
-
-    /**
-     * Get the validation error message.
-     *
-     * @return string
-     */
-    public function message()
-    {
-        return 'فرمت پسورد نامعتبر است.';
+        if(! preg_match('/^09[0|1|2|3][0-9]{8}$/', $value)){
+            $fail('فرمت موبایل نامعتبر است. شماره موبایل باید با 09 شروع بشود و بدون فاصله وارد شود.');
+        }
     }
 }

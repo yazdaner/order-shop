@@ -2,8 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use Yazdan\User\App\Http\Controllers\Auth\ForgotPasswordController;
-use Yazdan\User\App\Http\Controllers\Auth\LoginController;
-use Yazdan\User\App\Http\Controllers\Auth\RegisterController;
 use Yazdan\User\App\Http\Controllers\Auth\ResetPasswordController;
 use Yazdan\User\App\Http\Controllers\Auth\VerificationController;
 use Yazdan\User\App\Http\Controllers\UserController;
@@ -26,12 +24,6 @@ Route::prefix('admin-panel')->name('admin.')->middleware([
 
 
 // Home
-Route::group([
-    'middleware' => [
-        'auth',
-        'verified'
-    ]
-], function () {
 
     // Update User's Photo
     Route::post('/users/updatePhoto', [UserController::class, 'updatePhoto'])->name('users.updatePhoto');
@@ -40,7 +32,6 @@ Route::group([
     providerGetRoute('/users/profile',UserController::class,'profile','users.profile');
     Route::patch('/users/profile', [UserController::class, 'updateProfile'])->name('users.profile');
 
-});
 
 
 // Verification
@@ -57,16 +48,17 @@ Route::post('/email/resend', [VerificationController::class, 'resend'])->name('v
 
 // logout
 
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-Route::get('/logout', function(){
-auth()->logout();
-return back();
-})->name('logout');
+// Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+// Route::get('/logout', function(){
+// auth()->logout();
+// return back();
+// })->name('logout');
 
 // Register
 
-Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-Route::post('/register', [RegisterController::class, 'register'])->name('register');
+// Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+// Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
 // Reset Password
 Route::get('/password/reset/request', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
@@ -81,7 +73,6 @@ Route::get('/password/update', [ResetPasswordController::class, 'showResetForm']
     ->middleware('auth');
 
 Route::post('/password/update', [ResetPasswordController::class, 'update'])->name('password.update');
-
 
 Route::get('/password/resend/{email}', [ForgotPasswordController::class, 'resend'])->name('password.sendVerifyCode.resend');
 

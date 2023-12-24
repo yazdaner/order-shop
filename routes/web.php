@@ -28,3 +28,6 @@ Route::get('/a', function () {
 Route::get('/z', function () {
     dd(auth()->check());
 });
+Route::get('/xx', function () {
+    dd(auth()->user());
+});
