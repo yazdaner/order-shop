@@ -16,6 +16,7 @@ class MobileAuthServiceProvider extends ServiceProvider
         });
     }
 
+
     public function boot(): void
     {
         $this->_loadRoutes();

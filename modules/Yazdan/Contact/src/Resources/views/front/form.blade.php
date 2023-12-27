@@ -4,18 +4,18 @@
         @csrf
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6">
-                <x-input-home name="name" label="نام *" type="text" required/>
+                <x-input-home name="name" label="نام" type="text" required/>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6">
-                <x-input-home name="mobile" label="تلفن *" type="text" required/>
+                <x-input-home name="mobile" label="تلفن" type="text" required/>
             </div>
             <div class="col-12">
-                <x-input-home name="email" label="ایمیل *" type="email" required/>
+                <x-input-home name="email" label="ایمیل" type="email" required/>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6">
             </div>
             <div class="col-12">
-                <x-textarea-home label="پیام *" name="message"/>
+                <x-textarea-home label="پیام" name="message"/>
                 <div class="contact-btn">
                     <button class="btn btn-outline" type="submit">پیام ارسال</button>
                 </div>

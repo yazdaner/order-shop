@@ -16,5 +16,5 @@
     @endif
     @endforeach
 
-    <a href="login-register.html"><i class="fa fa-sign-out"></i> خروج</a>
+    <a href="{{route('logout')}}"><i class="fa fa-sign-out"></i> خروج</a>
 </div>

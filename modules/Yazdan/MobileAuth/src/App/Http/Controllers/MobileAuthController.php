@@ -2,13 +2,13 @@
 
 namespace Yazdan\MobileAuth\App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Yazdan\User\App\Models\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Yazdan\MobileAuth\App\Models\Otp;
-use Yazdan\MobileAuth\App\Http\Requests\OtpCheckRequest;
+use Yazdan\MobileAuth\Notifications\OtpSms;
 use Yazdan\MobileAuth\App\Http\Requests\MobileAuthRequest;
 use Yazdan\MobileAuth\App\Http\Requests\PasswordCheckRequest;
 
@@ -134,10 +134,12 @@ class MobileAuthController extends Controller
         if ($isExist)
             $this->_generateOtp();
 
-        Otp::create([
+        $otp = Otp::create([
             'mobile' => $mobile,
             'otp'  => $otp
         ]);
+
+        $otp->notify(new OtpSms);
     }
 
     public function otpCheck(Request $request)
