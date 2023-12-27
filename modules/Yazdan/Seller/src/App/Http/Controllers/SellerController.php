@@ -2,12 +2,13 @@
 
 namespace Yazdan\Seller\App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Yazdan\Seller\App\Models\Seller;
 use Yazdan\Common\Responses\AjaxResponses;
 use Yazdan\Media\Services\MediaFileService;
-use Yazdan\Seller\App\Http\Requests\SellerRequest;
-use Yazdan\Seller\App\Models\Seller;
 use Yazdan\Seller\Repositories\SellerRepository;
+use Yazdan\Seller\App\Http\Requests\SellerRequest;
 
 class SellerController extends Controller
 {
@@ -31,13 +32,15 @@ class SellerController extends Controller
     // index
     public function sellersForm()
     {
-        return view("Seller::home.index");
+        return view("Seller::front.index");
     }
 
     public function store(SellerRequest $request)
     {
+        dd($request->all());
+        // SellerRequest
         SellerRepository::store($request);
         newFeedbacks();
-        return redirect()->route('admin.sellers.index');
+        return back();
     }
 }

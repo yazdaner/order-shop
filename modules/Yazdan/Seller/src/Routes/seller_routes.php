@@ -20,8 +20,9 @@ Route::group([
         'verified'
     ]
 ], function () {
-    providerGetRoute('/sellers',SellerController::class,'sellersForm','sellers');
-    // Route::post('/sellers', [SellerController::class, 'store'])->name('sellers.store');
+    Route::get('/sellers', [SellerController::class, 'sellersForm'])->name('sellers');
+
+    Route::post('/sellers', [SellerController::class, 'store'])->name('sellers.store');
     // Route::put('/sellerses/{sellers}', [SellerController::class, 'update'])->name('sellers.update');
     // Route::get('/get-province-cities-list', [SellerController::class, 'getProvinceCitiesList']);
 

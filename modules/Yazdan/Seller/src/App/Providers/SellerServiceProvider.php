@@ -32,11 +32,5 @@ class SellerServiceProvider extends ServiceProvider
             'title' => 'فروشنده',
             'permission' => PermissionRepository::PERMISSION_MANAGE_SELLER,
         ]);
-
-        config()->set('sidebarHome.items.sellers', [
-            'icon' => 'uil-sellers',
-            'url' => route('sellers'),
-            'title' => 'فروشنده'
-        ]);
     }
 }

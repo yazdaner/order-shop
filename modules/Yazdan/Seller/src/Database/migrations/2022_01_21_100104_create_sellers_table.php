@@ -21,17 +21,27 @@ class CreateSellersTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->string("shop_name");
+            $table->string("slug")->unique();
             $table->string("seller_name");
+            $table->string("postal_code");
 
             $table->text("address");
 
-            $table->string('national_number', 10);
-            $table->string('mobile', 11);
-            $table->string('account_number', 16);
+            $table->string('national_number');
+            $table->string('mobile');
+            $table->string('card_number');
+            $table->string('sheba_number');
 
             $table->text("description")->nullable();
 
             $table->boolean("status")->default(false);
+
+            // nullable -> step 2
+
+            $table->text("body")->nullable();
+            $table->foreignId('media_id')->nullable();
+            $table->foreign('media_id')->references('id')->on('media')->onDelete('cascade');
+            // gallery
 
             $table->timestamps();
         });

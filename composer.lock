@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4f508ae161dd542796c41ced4435ec58",
+    "content-hash": "3d846228312c5b8d48b12266cba8421e",
     "packages": [
         {
             "name": "anetwork/validation",
