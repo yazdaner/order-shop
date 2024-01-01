@@ -12,8 +12,7 @@ class SellerPolicy
 
     public function manage(User $user)
     {
-        if($user->hasPermissionTo(PermissionRepository::PERMISSION_MANAGE_SLIDER)) return true;
+        if($user->hasPermissionTo(PermissionRepository::PERMISSION_MANAGE_SELLER)) return true;
     }
-
 
 }

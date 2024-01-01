@@ -29,7 +29,7 @@ class SellerServiceProvider extends ServiceProvider
         config()->set('sidebar.items.sellers', [
             'icon' => 'i-sellers',
             'url' => route('admin.sellers.index'),
-            'title' => 'فروشنده',
+            'title' => 'فروشندگان',
             'permission' => PermissionRepository::PERMISSION_MANAGE_SELLER,
         ]);
     }

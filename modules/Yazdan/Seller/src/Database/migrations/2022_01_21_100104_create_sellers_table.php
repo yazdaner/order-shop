@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Yazdan\Seller\App\Http\Requests\SellerRequest;
 use Yazdan\Seller\Repositories\SellerRepository;
 
 class CreateSellersTable extends Migration
@@ -34,7 +35,7 @@ class CreateSellersTable extends Migration
 
             $table->text("description")->nullable();
 
-            $table->boolean("status")->default(false);
+            $table->enum("status", SellerRepository::$statues)->default(SellerRepository::STATUS_NEW);
 
             // nullable -> step 2
 

@@ -23,12 +23,12 @@ class SellerRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             "seller_name" => ['required','persian_alpha'],
             "shop_name" => ['required','persian_alpha'],
             "slug" => ['required','is_not_persian','unique:sellers,slug'],
 
-            "mobile" => ['required','iran_mobile'],
+            "mobile" => ['required','numeric'],
             "card_number" => ['required','card_number'],
 
             "sheba_number" => ['required','sheba'],
@@ -37,8 +37,13 @@ class SellerRequest extends FormRequest
             "postal_code" => ['required','iran_postal_code'],
             "address" => ['required'],
             "description" => ['required']
-
         ];
+
+        if (request()->method === 'PUT') {
+            $rules['slug'] = "nullable|is_not_persian|unique:sellers,slug,".request()->route('seller');
+        }
+
+        return $rules;
     }
 
     public function attributes()
@@ -48,7 +53,7 @@ class SellerRequest extends FormRequest
             "shop_name" => 'نام فروشگاه',
             "slug" => 'نام فروشگاه به انگلیسی',
             "mobile" => 'شماره تماس',
-            "account_number" => 'شماره حساب',
+            "card_number" => 'شماره حساب',
             "sheba_number" => 'شماره شبا',
             "national_number" => 'کد ملی',
             "postal_code" => 'کد پستی',

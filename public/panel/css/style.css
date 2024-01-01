@@ -691,6 +691,11 @@ textarea {
     content: "\E0b8";
 }
 
+
+.sidebar__nav .i-sellers a::before {
+    content: "\E0b4";
+}
+
 .sidebar__nav .i-blogs a::before {
     content: "\E086";
 }

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use Yazdan\MobileAuth\Notifications\OtpSms;
 use Yazdan\RolePermissions\Repositories\RoleRepository;
+use Yazdan\Seller\App\Models\Seller;
 
 /*
 |--------------------------------------------------------------------------
@@ -97,4 +98,6 @@ Route::get('/v', function () {
     $user = User::find(1);
     $user->notify(new OtpSms(1234));
 });
-
+Route::get('/hhh', function () {
+    Seller::factory()->create();
+});
