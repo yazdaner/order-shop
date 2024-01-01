@@ -34,9 +34,9 @@
                                     <a href="{{route('home.variations.index',$product->id)}}" class="btn btn-yazdan" title="متغیر های محصول">مشاهده</a>
                                 </td>
                                 <td>
-                                    <a href="" onclick="deleteItem(event,'{{route('admin.products.destroy',$product->id)}}')" class="font-16" title="حذف"><i class="bi bi-trash3"></i></a>
-                                    <a href="{{route('admin.products.edit',$product->id)}}" class="font-16" title="ویرایش"><i class="bi bi-pencil-square"></i></a>
-                                    <a href="{{route('admin.products.gallery',$product->id)}}" class="font-16" title="ویرایش گالری"><i class="bi bi-image-fill"></i></a>
+                                    <a href="" onclick="deleteItem(event,'{{route('home.products.destroy',$product->id)}}')" class="font-16" title="حذف"><i class="bi bi-trash3"></i></a>
+                                    <a href="{{route('home.products.edit',$product->id)}}" class="font-16" title="ویرایش"><i class="bi bi-pencil-square"></i></a>
+                                    <a href="{{route('home.products.gallery',$product->id)}}" class="font-16" title="ویرایش گالری"><i class="bi bi-image-fill"></i></a>
                                 </td>
                             </tr>
                         @endforeach

@@ -43,6 +43,16 @@ Route::prefix('home')->name('home.')->middleware([
     providerGetRoute('/products',HomeProductController::class,'sellerProducts','products');
     Route::get('products/create',[HomeProductController::class,'create'])->name('products.create');
     Route::post('products/store',[HomeProductController::class,'store'])->name('products.store');
+    Route::delete('products/{product}/destroy',[HomeProductController::class,'destroy'])->name('products.destroy');
+    Route::get('products/{product}/edit',[HomeProductController::class,'edit'])->name('products.edit');
+    Route::put('products/{product}/update',[HomeProductController::class,'update'])->name('products.update');
+
+
+
+    // gallery
+    Route::get('products/{product}/gallery',[HomeProductController::class,'gallery'])->name('products.gallery');
+    Route::post('products/{product}/addImageGallery',[HomeProductController::class,'addImagesGallery'])->name('products.addImagesGallery');
+    Route::get('galleries/{gallery}/delete',[HomeProductController::class,'deleteImageGallery'])->name('gallery.delete');
 
 
     // variation
