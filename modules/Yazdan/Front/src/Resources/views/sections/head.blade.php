@@ -11,5 +11,6 @@
 <!--    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">-->
     <link href="{{asset('./assets/css/style.css')}}" rel="stylesheet">
     <link href="{{asset('./assets/css/custom.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     @yield('style')
 </head>

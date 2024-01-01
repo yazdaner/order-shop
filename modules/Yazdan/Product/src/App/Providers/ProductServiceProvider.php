@@ -24,14 +24,18 @@ class ProductServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        $this->app->booted(function () {
-            config()->set('sidebar.items.products', [
-                'icon' => 'i-products',
-                'url' => route('admin.products.index'),
-                'title' => 'محصولات',
-                'permission' => PermissionRepository::PERMISSION_MANAGE_PRODUCT,
-            ]);
-        });
+        config()->set('sidebar.items.products', [
+            'icon' => 'i-products',
+            'url' => route('admin.products.index'),
+            'title' => 'محصولات',
+            'permission' => PermissionRepository::PERMISSION_MANAGE_PRODUCT,
+        ]);
+
+        config()->set('sidebarHome.items.homeProducts', [
+            'icon' => 'uil-dashboard',
+            'url' => route('home.products'),
+            'title' => 'محصولات'
+        ]);
     }
 
 }

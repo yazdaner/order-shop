@@ -15,6 +15,8 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
 
+            $table->foreignId('seller_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+
             $table->foreignId('category_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
 
             $table->foreignId('media_id')->nullable();
@@ -25,7 +27,7 @@ return new class extends Migration
 
             $table->text('description')->nullable();
             $table->text('body')->nullable();
-            
+
             $table->enum('status',ProductRepository::$statuses);
 
             $table->bigInteger('views')->unsigned()->default(0)->index();

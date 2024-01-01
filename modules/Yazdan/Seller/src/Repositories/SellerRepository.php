@@ -60,15 +60,15 @@ class SellerRepository
         ]);
     }
 
-    // public function delete($id)
-    // {
-    //     Seller::where('id', $id)->delete();
-    // }
-
     public static function updateStatus($id, string $status)
     {
         return Seller::query()->where("id", $id)->update([
             "status" => $status
         ]);
+    }
+
+    public static function getSeller()
+    {
+        return Seller::where('user_id',auth()->id())->whereStatus(self::STATUS_APPROVED)->first()->id ?? null;
     }
 }

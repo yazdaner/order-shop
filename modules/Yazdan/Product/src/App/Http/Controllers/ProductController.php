@@ -16,6 +16,7 @@ use Yazdan\Product\App\Http\Requests\ProductRequest;
 
 class ProductController extends Controller
 {
+    // Admin
 
     public function index()
     {
@@ -31,7 +32,6 @@ class ProductController extends Controller
         $categories = CategoryRepository::getTypeAll(Product::class);
         return view('Product::admin.create', compact('statuses', 'categories'));
     }
-
 
     public function store(ProductRequest $request)
     {
@@ -139,7 +139,7 @@ class ProductController extends Controller
         return back();
     }
 
-    //front
+    //Front
 
     public function products()
     {
