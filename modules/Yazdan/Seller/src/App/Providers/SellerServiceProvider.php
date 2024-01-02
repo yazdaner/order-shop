@@ -32,5 +32,12 @@ class SellerServiceProvider extends ServiceProvider
             'title' => 'فروشندگان',
             'permission' => PermissionRepository::PERMISSION_MANAGE_SELLER,
         ]);
+
+        // home
+        config()->set('sidebarHome.items.homeProducts', [
+            'icon' => 'uil-dashboard',
+            'url' => route('home.seller.profile'),
+            'title' => 'صفحه فروشنده'
+        ]);
     }
 }

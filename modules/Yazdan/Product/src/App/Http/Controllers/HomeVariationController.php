@@ -43,7 +43,7 @@ class HomeVariationController extends Controller
     public function edit(Variation $variation)
     {
         $this->authorize('manage', Product::class);
-        return view('Product::admin.variation.edit', compact('variation'));
+        return view('Product::home.variation.edit', compact('variation'));
     }
 
     public function update(Variation $variation, VariationRequest $request)

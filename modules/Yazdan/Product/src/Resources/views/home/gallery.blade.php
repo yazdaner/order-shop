@@ -9,7 +9,7 @@
             <p class="box__title">ویرایش گالری محصول</p>
 
           <div class="container p-4">
-            <form action="{{route('admin.products.addImagesGallery',$product->id)}}" method="post" class="padding-30"
+            <form action="{{route('admin.products.addImagesGallery',$product->id)}}" method="post" class="padding-30 mb-5"
                 enctype="multipart/form-data">
                 @csrf
                 <x-file-upload-home name="images[]" label="تصاویر محصول" multiple="true" />

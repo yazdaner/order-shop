@@ -95,10 +95,10 @@ class HomeProductController extends Controller
         } catch (\Exception $ex) {
             DB::rollBack();
             newFeedbacks('error', $ex->getMessage(), 'error');
-            return redirect(route('home.products.index'));
+            return redirect(route('home.products'));
         }
         newFeedbacks();
-        return redirect(route('home.products.index'));
+        return redirect(route('home.products'));
     }
 
     public function gallery(Product $product)

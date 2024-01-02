@@ -31,8 +31,8 @@
                                 <td>{{number_format($variation->price2)}}</td>
                                 <td>{{$variation->sku}}</td>
                                 <td>
-                                    <a href="" onclick="deleteItem(event,'{{route('admin.variations.destroy',$variation->id)}}')" class="item-delete mlg-15" title="حذف"></a>
-                                    <a href="{{route('admin.variations.edit',$variation->id)}}" class="item-edit" title="ویرایش"></a>
+                                    <a href="" onclick="deleteItem(event,'{{route('home.variations.destroy',$variation->id)}}')" class="font-16" title="حذف"><i class="bi bi-trash3"></i></a>
+                                    <a href="{{route('home.variations.edit',$variation->id)}}" class="item-edit" title="ویرایش"><i class="bi bi-pencil-square"></i></a>
                                 </td>
                             </tr>
                         @endforeach

@@ -21,7 +21,7 @@ Route::prefix('admin-panel/sellers')->name('admin.sellers.')->middleware([
 });
 
 
-// Home
+// Front
 
 Route::group([
     'middleware' => [
@@ -32,5 +32,18 @@ Route::group([
     Route::get('/sellers', [SellerController::class, 'sellersForm'])->name('sellers');
     Route::post('/sellers', [SellerController::class, 'store'])->name('sellers.store');
 
+});
+
+
+
+// Home
+
+Route::group([
+    'middleware' => [
+        'auth',
+        'verified'
+    ]
+], function () {
+    providerGetRoute('/seller/profile',SellerController::class,'profile','home.seller.profile');
 });
 

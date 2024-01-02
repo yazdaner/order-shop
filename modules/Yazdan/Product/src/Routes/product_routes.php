@@ -57,9 +57,9 @@ Route::prefix('home')->name('home.')->middleware([
 
     // variation
 
-    Route::get('variations/{product}',[HomeVariationController::class,'index'])->name('variations.index');
+    Route::get('products/variations/{product}',[HomeVariationController::class,'index'])->name('variations.index');
     Route::post('variations/store',[HomeVariationController::class,'store'])->name('variations.store');
-    Route::get('variations/{variation}/edit',[HomeVariationController::class,'edit'])->name('variations.edit');
+    Route::get('products/variations/{variation}/edit',[HomeVariationController::class,'edit'])->name('variations.edit');
     Route::put('variations/{variation}/update',[HomeVariationController::class,'update'])->name('variations.update');
     Route::delete('variations/{variation}/destroy',[HomeVariationController::class,'destroy'])->name('variations.destroy');
 });

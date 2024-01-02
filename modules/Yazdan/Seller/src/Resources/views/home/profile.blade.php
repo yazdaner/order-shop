@@ -1,7 +1,7 @@
 @extends('Home::master')
 @section('homeContent')
 <div class="col-12">
-    <h3 class="">جزئیات شخصی</h3>
+    <h3 class="">صفحه فروشنده</h3>
     <form action="{{route('users.profile')}}" method="post">
         @csrf
         @method('patch')

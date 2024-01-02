@@ -72,5 +72,14 @@ class SellerController extends Controller
         return back();
     }
 
+    // home
+
+
+    public function profile()
+    {
+        $this->authorize('manage', Seller::class);
+        return view('Seller::home.profile');
+    }
+
 
 }

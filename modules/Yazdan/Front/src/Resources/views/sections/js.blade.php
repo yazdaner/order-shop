@@ -13,5 +13,6 @@
 <script src="{{asset('assets/js/vendor.js')}}"></script>
 <!-- Active Js -->
 <script src="{{asset('assets/js/active.js')}}"></script>
+<script src="{{asset('assets/js/custom.js')}}"></script>
 @include('Common::layouts.feedbacks')
 @yield('script')
