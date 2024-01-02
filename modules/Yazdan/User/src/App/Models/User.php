@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Yazdan\Address\App\Models\Address;
 use Yazdan\MobileAuth\Traits\HasMobileAuth;
+use Yazdan\Seller\App\Models\Seller;
 use Yazdan\User\App\Notifications\VerifyMailNotification;
 use Yazdan\User\App\Notifications\ResetPasswordEmailCodeNotification;
 
@@ -63,5 +64,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function address()
     {
         return $this->hasOne(Address::class, 'user_id');
+    }
+
+    public function seller()
+    {
+        return $this->hasOne(Seller::class, 'user_id');
     }
 }

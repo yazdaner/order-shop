@@ -35,7 +35,7 @@ class HomeProductController extends Controller
     {
         $this->authorize('manage', Product::class);
 
-        $sellerId = SellerRepository::getSeller();
+        $sellerId = SellerRepository::getSellerId();
 
         if($sellerId == null){
             newFeedbacks('error', 'فروشنده یاقت نشد', 'error');

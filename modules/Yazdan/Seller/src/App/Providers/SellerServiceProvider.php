@@ -36,6 +36,12 @@ class SellerServiceProvider extends ServiceProvider
         // home
         config()->set('sidebarHome.items.homeProducts', [
             'icon' => 'uil-dashboard',
+            'url' => route('home.products'),
+            'title' => 'محصولات'
+        ]);
+
+        config()->set('sidebarHome.items.sellerProduct', [
+            'icon' => 'uil-dashboard',
             'url' => route('home.seller.profile'),
             'title' => 'صفحه فروشنده'
         ]);

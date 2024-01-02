@@ -2,31 +2,28 @@
 @section('homeContent')
 <div class="col-12">
     <h3 class="">صفحه فروشنده</h3>
-    <form action="{{route('users.profile')}}" method="post">
+    <form action="{{route('seller.profile.update')}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('patch')
 
         <div class="row mt-4">
-            <div class="col-md-6">
-                <x-input-home name="username" label="نام کاربری" value="{{auth()->user()->username}}">
-                    <i data-feather="user" class="fea icon-sm icons"></i>
-                </x-input-home>
+
+            <div class="mt-3">
+                @if (isset(auth()->user()->seller->media))
+                <a href="{{auth()->user()->seller->getImage()}}" target="_blank">
+                    <img class="img-thumbnail" width="100" src="{{auth()->user()->seller->getImage()}}" />
+                </a>
+                @else
+                <span class="selectedFiles">فایلی انتخاب نشده است</span>
+                @endif
             </div>
-            <div class="col-md-6">
-                <x-input-home name="name" label="نام" value="{{auth()->user()->name}}">
-                    <i data-feather="user-check" class="fea icon-sm icons"></i>
-                </x-input-home>
+            <div class="mt-4">
+                <x-file-upload-home type="file" name="media" label="تصویر شاخص" />
             </div>
-            <div class="col-md-6">
-                <x-input-home name="email" label="ایمیل شما" value="{{auth()->user()->email}}" disabled>
-                    <i data-feather="mail" class="fea icon-sm icons"></i>
-                </x-input-home>
-            </div>
-            <div class="col-md-6">
-                <x-input-home name="mobile" label="شماره موبایل" value="{{auth()->user()->mobile}}">
-                    <i data-feather="phone" class="fea icon-sm icons"></i>
-                </x-input-home>
-            </div>
+            <x-textarea-home name="body" label="توضیحات" value="{{auth()->user()->seller->body ?? old('body')}}" />
+
+
+
         </div>
         <div class="row">
             <div class="col-sm-12">

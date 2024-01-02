@@ -59,6 +59,13 @@ class SellerRepository
             "description" => $data->description,
         ]);
     }
+    public static function updateFromSeller($id, $data): void
+    {
+        Seller::where('id', $id)->update([
+            "body" => $data->body,
+            "media_id" => $data->media_id,
+        ]);
+    }
 
     public static function updateStatus($id, string $status)
     {
@@ -69,6 +76,11 @@ class SellerRepository
 
     public static function getSeller()
     {
-        return Seller::where('user_id',auth()->id())->whereStatus(self::STATUS_APPROVED)->first()->id ?? null;
+        return Seller::where('user_id',auth()->id())->whereStatus(self::STATUS_APPROVED)->first() ?? null;
+    }
+
+    public static function getSellerId()
+    {
+        return self::getSeller() ? self::getSeller()->id : null;
     }
 }

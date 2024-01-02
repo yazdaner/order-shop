@@ -45,5 +45,7 @@ Route::group([
     ]
 ], function () {
     providerGetRoute('/seller/profile',SellerController::class,'profile','home.seller.profile');
+    Route::patch('/seller/profile/update',[SellerController::class,'profileUpdate'])->name('seller.profile.update');
+
 });
 

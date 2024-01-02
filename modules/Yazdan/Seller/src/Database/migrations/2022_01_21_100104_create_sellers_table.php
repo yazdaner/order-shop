@@ -41,7 +41,7 @@ class CreateSellersTable extends Migration
 
             $table->text("body")->nullable();
             $table->foreignId('media_id')->nullable();
-            $table->foreign('media_id')->references('id')->on('media')->onDelete('cascade');
+            $table->foreign('media_id')->references('id')->on('media')->onDelete('set null');
             // gallery
 
             $table->timestamps();
