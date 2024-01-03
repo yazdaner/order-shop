@@ -4,6 +4,7 @@ namespace Yazdan\Seller\App\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Yazdan\RolePermissions\Repositories\PermissionRepository;
+use Yazdan\Seller\Repositories\SellerRepository;
 use Yazdan\User\App\Models\User;
 
 class SellerPolicy
@@ -12,7 +13,13 @@ class SellerPolicy
 
     public function manage(User $user)
     {
-        if($user->hasPermissionTo(PermissionRepository::PERMISSION_MANAGE_SELLER)) return true;
+        $seller = SellerRepository::getSeller();
+        if($seller == null){
+            return false;
+        }else{
+            return true;
+        }
+        // if($user->hasPermissionTo(PermissionRepository::PERMISSION_MANAGE_SELLER)) return true;
     }
 
 }

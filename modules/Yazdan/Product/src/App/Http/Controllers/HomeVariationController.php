@@ -15,14 +15,14 @@ class HomeVariationController extends Controller
 
     public function index(Product $product)
     {
-        $this->authorize('manage', Product::class);
+        $this->authorize('manage', Seller::class);
         $variations = VariationRepository::getProductVariations($product->id);
         return view('Product::home.variation.index', compact('product', 'variations'));
     }
 
     public function store(VariationRequest $request)
     {
-        $this->authorize('manage', Product::class);
+        $this->authorize('manage', Seller::class);
 
         try {
             DB::beginTransaction();
@@ -42,13 +42,13 @@ class HomeVariationController extends Controller
 
     public function edit(Variation $variation)
     {
-        $this->authorize('manage', Product::class);
+        $this->authorize('manage', Seller::class);
         return view('Product::home.variation.edit', compact('variation'));
     }
 
     public function update(Variation $variation, VariationRequest $request)
     {
-        $this->authorize('manage', Product::class);
+        $this->authorize('manage', Seller::class);
         try {
             DB::beginTransaction();
 
@@ -66,7 +66,7 @@ class HomeVariationController extends Controller
 
     public function destroy(Variation $variation)
     {
-        $this->authorize('manage', Product::class);
+        $this->authorize('manage', Seller::class);
         try {
             DB::beginTransaction();
             $variation->delete();

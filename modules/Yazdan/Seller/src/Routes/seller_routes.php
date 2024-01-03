@@ -65,5 +65,4 @@ Route::group([
     ]
 ], function () {
     providerGetRoute('/seller/info',SellerInfoController::class,'info','home.seller.info');
-
 });

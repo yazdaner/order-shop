@@ -19,13 +19,14 @@ class HomeProductController extends Controller
 
     public function sellerProducts()
     {
+        $this->authorize('manage', Seller::class);
         $products = Product::latest()->paginate(20);
         return view('Product::home.index',compact('products'));
     }
 
     public function create()
     {
-        $this->authorize('manage', Product::class);
+        $this->authorize('manage', Seller::class);
         $statuses = ProductRepository::$statuses;
         $categories = CategoryRepository::getTypeAll(Product::class);
         return view('Product::home.create', compact('statuses', 'categories'));
@@ -33,7 +34,7 @@ class HomeProductController extends Controller
 
     public function store(ProductRequest $request)
     {
-        $this->authorize('manage', Product::class);
+        $this->authorize('manage', Seller::class);
 
         $sellerId = SellerRepository::getSellerId();
 
@@ -62,7 +63,7 @@ class HomeProductController extends Controller
 
     public function destroy($id)
     {
-        $this->authorize('manage', Product::class);
+        $this->authorize('manage', Seller::class);
         try {
             DB::beginTransaction();
             ProductRepository::delete($id);
@@ -76,7 +77,7 @@ class HomeProductController extends Controller
 
     public function edit(Product $product)
     {
-        $this->authorize('manage', Product::class);
+        $this->authorize('manage', Seller::class);
         $statuses = ProductRepository::$statuses;
         $categories = CategoryRepository::getTypeAll(Product::class);
         return view('Product::home.edit', compact('product', 'statuses', 'categories'));
@@ -84,7 +85,7 @@ class HomeProductController extends Controller
 
     public function update(Product $product, ProductRequest $request)
     {
-        $this->authorize('manage', Product::class);
+        $this->authorize('manage', Seller::class);
         try {
             DB::beginTransaction();
 
@@ -103,13 +104,13 @@ class HomeProductController extends Controller
 
     public function gallery(Product $product)
     {
-        $this->authorize('manage', Product::class);
+        $this->authorize('manage', Seller::class);
         return view('Product::home.gallery', compact('product'));
     }
 
     public function deleteImageGallery(Gallery $gallery)
     {
-        $this->authorize('manage', Product::class);
+        $this->authorize('manage', Seller::class);
         try {
             DB::beginTransaction();
             destroyImage($gallery);
@@ -125,7 +126,7 @@ class HomeProductController extends Controller
 
     public function addImagesGallery(Product $product, GalleryRequest $request)
     {
-        $this->authorize('manage', Product::class);
+        $this->authorize('manage', Seller::class);
 
         try {
             DB::beginTransaction();

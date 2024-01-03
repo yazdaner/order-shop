@@ -4,6 +4,7 @@ namespace Yazdan\Seller\App\Http\Controllers;
 
 
 use App\Http\Controllers\Controller;
+use Yazdan\Seller\App\Models\Seller;
 use Yazdan\Seller\Repositories\SellerRepository;
 
 
