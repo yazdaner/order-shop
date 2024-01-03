@@ -31,11 +31,6 @@ class ProductServiceProvider extends ServiceProvider
             'permission' => PermissionRepository::PERMISSION_MANAGE_PRODUCT,
         ]);
 
-        config()->set('sidebarHome.items.homeProducts', [
-            'icon' => 'uil-dashboard',
-            'url' => route('home.products'),
-            'title' => 'محصولات'
-        ]);
     }
 
 }

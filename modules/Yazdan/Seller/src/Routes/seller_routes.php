@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Yazdan\Seller\App\Http\Controllers\SellerController;
+use Yazdan\Seller\App\Http\Controllers\SellerInfoController;
 use Yazdan\Seller\App\Http\Controllers\SellerProfileController;
 
 // Admin
@@ -63,6 +64,6 @@ Route::group([
         'verified'
     ]
 ], function () {
-    providerGetRoute('/seller/info',SellerProfileController::class,'info','home.seller.info');
+    providerGetRoute('/seller/info',SellerInfoController::class,'info','home.seller.info');
 
 });
