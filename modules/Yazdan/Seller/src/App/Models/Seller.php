@@ -6,10 +6,11 @@ use Yazdan\Media\Traits\HasMedia;
 use Illuminate\Database\Eloquent\Model;
 use Yazdan\Seller\Repositories\SellerRepository;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Yazdan\Media\Traits\HasGallery;
 
 class Seller extends Model
 {
-    use HasMedia,HasFactory;
+    use HasMedia,HasFactory,HasGallery;
 
     protected $table = 'sellers';
     protected $guarded = [];

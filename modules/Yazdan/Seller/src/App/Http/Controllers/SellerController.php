@@ -3,11 +3,14 @@
 namespace Yazdan\Seller\App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Yazdan\Media\App\Models\Gallery;
 use Yazdan\Seller\App\Models\Seller;
 use Yazdan\Common\Responses\AjaxResponses;
 use Yazdan\Seller\Repositories\SellerRepository;
 use Yazdan\Seller\App\Http\Requests\SellerRequest;
+use Yazdan\Product\App\Http\Requests\GalleryRequest;
 
 class SellerController extends Controller
 {
@@ -36,7 +39,6 @@ class SellerController extends Controller
         return AjaxResponses::ErrorResponses();
     }
 
-
     public function destroy(Seller $seller)
     {
         $this->authorize('manage', Seller::class);
@@ -59,6 +61,7 @@ class SellerController extends Controller
         newFeedbacks();
         return back();
     }
+
     // front
 
     public function sellersForm()
@@ -69,77 +72,6 @@ class SellerController extends Controller
     public function store(SellerRequest $request)
     {
         SellerRepository::store($request);
-        newFeedbacks();
-        return back();
-    }
-
-    // home
-
-
-    public function profile()
-    {
-        $this->authorize('manage', Seller::class);
-        return view('Seller::home.profile');
-    }
-
-    public function profileUpdate(Request $request)
-    {
-        $this->authorize('manage', Seller::class);
-
-        $request->validate([
-            'body' => 'nullable|string',
-            'media' => 'nullable|image',
-        ]);
-        $seller = SellerRepository::getSeller();
-        if($seller->media){
-            $request = updateImage($request, $seller);
-        }else{
-            $request = storeImage($request, $seller);
-        }
-        SellerRepository::updateFromSeller($seller->id, $request);
-        newFeedbacks();
-        return redirect(route('home.seller.profile'));
-    }
-
-    public function gallery(Seller $product)
-    {
-        $this->authorize('manage', Seller::class);
-        return view('Seller::admin.gallery', compact('product'));
-    }
-
-    public function deleteImageGallery(Gallery $gallery)
-    {
-        $this->authorize('manage', Seller::class);
-        try {
-            DB::beginTransaction();
-            destroyImage($gallery);
-            DB::commit();
-        } catch (\Exception $ex) {
-            DB::rollBack();
-            newFeedbacks('error', $ex->getMessage(), 'error');
-            return back();
-        }
-        newFeedbacks();
-        return back();
-    }
-
-    public function addImagesGallery(Seller $product, GalleryRequest $request)
-    {
-        $this->authorize('manage', Seller::class);
-
-        try {
-            DB::beginTransaction();
-
-            $request = storeImages($request);
-            addImagesGallery($product, $request);
-
-            DB::commit();
-        } catch (\Exception $ex) {
-            DB::rollBack();
-            newFeedbacks('error', $ex->getMessage(), 'error');
-            return back();
-        }
-
         newFeedbacks();
         return back();
     }

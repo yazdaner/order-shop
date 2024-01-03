@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Yazdan\Seller\App\Http\Controllers\SellerController;
+use Yazdan\Seller\App\Http\Controllers\SellerProfileController;
 
 // Admin
 
@@ -37,15 +38,31 @@ Route::group([
 
 
 // Home
-
+// profile
 Route::group([
     'middleware' => [
         'auth',
         'verified'
     ]
 ], function () {
-    providerGetRoute('/seller/profile',SellerController::class,'profile','home.seller.profile');
-    Route::patch('/seller/profile/update',[SellerController::class,'profileUpdate'])->name('seller.profile.update');
+    providerGetRoute('/seller/profile',SellerProfileController::class,'profile','home.seller.profile');
+    Route::patch('/seller/profile/update',[SellerProfileController::class,'profileUpdate'])->name('seller.profile.update');
+
+     // gallery
+     Route::get('seller/gallery',[SellerProfileController::class,'gallery'])->name('home.sellers.gallery');
+     Route::post('seller/{seller}/addImageGallery',[SellerProfileController::class,'addImagesGallery'])->name('home.sellers.addImagesGallery');
+     Route::get('galleries/{gallery}/delete',[SellerProfileController::class,'deleteImageGallery'])->name('home.sellers.galleryDelete');
 
 });
 
+
+// info
+Route::group([
+    'middleware' => [
+        'auth',
+        'verified'
+    ]
+], function () {
+    providerGetRoute('/seller/info',SellerProfileController::class,'info','home.seller.info');
+
+});

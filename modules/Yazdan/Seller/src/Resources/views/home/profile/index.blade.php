@@ -23,13 +23,16 @@
             <x-textarea-home name="body" label="توضیحات" value="{{auth()->user()->seller->body ?? old('body')}}" />
 
 
-
         </div>
-        <div class="row">
-            <div class="col-sm-12">
+        <div class="row mt-3">
+            <div class="col-sm-12 d-flex justify-content-between">
                 <input type="submit" class="btn btn-primary" value="ذخیره تغییرات">
+                <a href="{{route('home.sellers.gallery')}}" class="btn btn-primary">ویراش گالری</a>
             </div>
         </div>
+
     </form>
+
 </div>
+
 @endsection
