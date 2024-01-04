@@ -8,10 +8,14 @@ use Spatie\Permission\Models\Role;
 class RoleRepository
 {
     const ROLE_SUPER_ADMIN = 'super admin';
+    const ROLE_SELLER = 'role seller';
     static $roles = [
         self::ROLE_SUPER_ADMIN => [
             PermissionRepository::PERMISSION_SUPER_ADMIN
         ],
+        self::ROLE_SELLER => [
+            PermissionRepository::PERMISSION_MANAGE_SELLER
+        ]
     ];
 
     public static function getAll()

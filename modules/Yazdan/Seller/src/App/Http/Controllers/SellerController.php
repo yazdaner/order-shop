@@ -5,12 +5,14 @@ namespace Yazdan\Seller\App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Spatie\Permission\Models\Role;
 use Yazdan\Media\App\Models\Gallery;
 use Yazdan\Seller\App\Models\Seller;
 use Yazdan\Common\Responses\AjaxResponses;
 use Yazdan\Seller\Repositories\SellerRepository;
 use Yazdan\Seller\App\Http\Requests\SellerRequest;
 use Yazdan\Product\App\Http\Requests\GalleryRequest;
+use Yazdan\RolePermissions\Repositories\RoleRepository;
 
 class SellerController extends Controller
 {
@@ -25,8 +27,11 @@ class SellerController extends Controller
     {
         $this->authorize('manage', Seller::class);
         if (SellerRepository::updateStatus($id, SellerRepository::STATUS_APPROVED)) {
+            $seller = SellerRepository::getSellerById($id);
+            $seller->user->assignRole(RoleRepository::ROLE_SELLER);
             return AjaxResponses::SuccessResponses();
         }
+
         return AjaxResponses::ErrorResponses();
     }
 
@@ -34,6 +39,8 @@ class SellerController extends Controller
     {
         $this->authorize('manage', Seller::class);
         if (SellerRepository::updateStatus($id, SellerRepository::STATUS_REJECTED)) {
+            $seller = SellerRepository::getSellerById($id);
+            $seller->user->removeRole(RoleRepository::ROLE_SELLER);
             return AjaxResponses::SuccessResponses();
         }
         return AjaxResponses::ErrorResponses();

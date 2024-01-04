@@ -2,11 +2,12 @@
 
 namespace Yazdan\Seller\App\Models;
 
+use Yazdan\User\App\Models\User;
 use Yazdan\Media\Traits\HasMedia;
+use Yazdan\Media\Traits\HasGallery;
 use Illuminate\Database\Eloquent\Model;
 use Yazdan\Seller\Repositories\SellerRepository;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Yazdan\Media\Traits\HasGallery;
 
 class Seller extends Model
 {
@@ -15,6 +16,10 @@ class Seller extends Model
     protected $table = 'sellers';
     protected $guarded = [];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class,'user_id');
+    }
 
     public function getStatusCssClass()
     {

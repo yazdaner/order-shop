@@ -79,6 +79,11 @@ class SellerRepository
         return Seller::where('user_id',auth()->id())->whereStatus(self::STATUS_APPROVED)->first() ?? null;
     }
 
+    public static function getSellerById($id)
+    {
+        return Seller::where('id',$id)->first() ?? null;
+    }
+
     public static function getSellerId()
     {
         return self::getSeller() ? self::getSeller()->id : null;

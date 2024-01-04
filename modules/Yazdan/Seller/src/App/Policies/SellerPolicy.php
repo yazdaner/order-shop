@@ -13,13 +13,7 @@ class SellerPolicy
 
     public function manage(User $user)
     {
-        $seller = SellerRepository::getSeller();
-        if($seller == null){
-            return false;
-        }else{
-            return true;
-        }
-        // if($user->hasPermissionTo(PermissionRepository::PERMISSION_MANAGE_SELLER)) return true;
+        if($user->hasPermissionTo(PermissionRepository::PERMISSION_MANAGE_SELLER)) return true;
     }
 
 }
