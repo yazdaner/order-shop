@@ -56,40 +56,42 @@
                                 </div>
                             </div>
                             <div class="col-lg-7">
-                                <div class="product-details-des">
-                                    <h5 class="product-name"><a href="product-details.html">{{$product->title}}</a></h5>
-                                    <div class="ratings">
-                                        <div class="pro-review">
-                                            <span>1 نظر</span>
-                                        </div>
-                                    </div>
-                                    @include('Product::front.productPrice')
-                                    <p>{!! $product->description !!}</p>
-
-                                    @if ($product->variations->isNotEmpty())
-                                    <div class="pro-size mb-26 mt-26">
-                                        <h5>نوع :</h5>
-                                        <select name="variation" class="form-control w-50 variation-select">
-                                            @foreach ($product->variations as $variation)
-                                            <option
-                                                value="{{ json_encode($variation->only(['id' , 'quantity','is_sale' , 'price2' , 'price'])) }}">
-                                                {{$variation->title}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="quantity-cart-box d-flex align-items-center">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
+                                <form action="{{route('checkout')}}" method="post">
+                                    @csrf
+                                    <div class="product-details-des">
+                                        <h5 class="product-name"><a href="product-details.html">{{$product->title}}</a></h5>
+                                        <div class="ratings">
+                                            <div class="pro-review">
+                                                <span>1 نظر</span>
                                             </div>
                                         </div>
-                                        <div class="action_link">
-                                            <a class="buy-btn" href="#"><i class="ion-bag"></i>به سبد خرید اضافه
-                                                کنید</a>
+                                        @include('Product::front.productPrice')
+                                        <p>{!! $product->description !!}</p>
+
+                                        @if ($product->variations->isNotEmpty())
+                                        <div class="pro-size mb-26 mt-26">
+                                            <h5>نوع :</h5>
+                                            <select name="variation" class="form-control w-50 variation-select">
+                                                @foreach ($product->variations as $variation)
+                                                <option
+                                                    value="{{ json_encode($variation->only(['id','quantity','is_sale' , 'price2' , 'price'])) }}">
+                                                    {{$variation->title}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
+                                        <div class="quantity-cart-box d-flex align-items-center">
+                                            <div class="quantity">
+                                                <div class="pro-qty">
+                                                    <input name="quantity" type="text" value="1">
+                                                </div>
+                                            </div>
+                                            <div class="action_link">
+                                                <button class="buy-btn" type="submit"><i class="ion-bag"></i>سفارش محصول</button>
+                                            </div>
+                                        </div>
+                                        @endif
                                     </div>
-                                    @endif
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>

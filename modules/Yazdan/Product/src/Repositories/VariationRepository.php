@@ -11,6 +11,11 @@ class VariationRepository
         return Variation::where('product_id', $productId)->get();
     }
 
+    public static function get($id)
+    {
+        return Variation::where('id', $id)->first();
+    }
+
     public static function store($data)
     {
         Variation::create([

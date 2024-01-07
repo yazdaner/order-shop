@@ -27,33 +27,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($payments as $key => $payment)
-                            <tr role="row" class="">
-                                <td><a href="">{{$payments->firstItem() + $key}}</a></td>
-                                <td>
-                                    <a href="{{$payment->paymentable->product->getImage()}}" target="_blank"><img src="{{$payment->paymentable->product->getImage(60)}}" class="profile_sm"></a>
-                                </td>
-                                <td>{{$payment->paymentable->product->title}} ({{$payment->paymentable->title}})</tf>
-                                <td>{{verta($payment->created_at)}}</td>
-                                <td>{{number_format($payment->totalAmount)}}</td>
-                                <td>{{$payment->quantity}}</td>
-                                <td>{{$payment->invoice_id}}</td>
-                                <td>{{$payment->user->username}}</td>
-                                @php
-                                    $address = $payment->user->address;
-                                @endphp
-                                <td><a class="btn-show btn btn-yazdan" href="#rolesModal" rel="modal:open" onclick="showComment(event,'{{json_encode($address)}}','{{$address->province->name}}','{{$address->city->name}}')">نمایش</a></td>
-                                <td>{{__($payment->order->status ?? '')}}</td>
-                                <td>
-                                    <a href="{{route('admin.orders.edit',$payment->order->id)}}" class="item-edit" title="ویرایش"></a>
-                                </td>
-                            </tr>
-                        @endforeach
+
                     </tbody>
                 </table>
             </div>
             @include("Order::admin.address")
-            {{ $payments->links('pagination.admin') }}
         </div>
     </div>
 </div>

@@ -6,7 +6,7 @@ use Yazdan\Order\App\Http\Controllers\OrderController;
 // Front
 Route::middleware(['auth', 'verified'])->group(function () {
 
-    Route::get('/checkout', [OrderController::class, 'checkout'])->name('checkout');
+    Route::post('/checkout', [OrderController::class, 'checkout'])->name('checkout');
 
 });
 
