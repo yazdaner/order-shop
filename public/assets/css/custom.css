@@ -16,3 +16,13 @@
     background-color: #ccc;
     color: rgb(49, 49, 49);
 }
+
+.not-in-stock p{
+    background-color: #b5b5b5;
+    color: #363636;
+    text-align: center;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 20px;
+}

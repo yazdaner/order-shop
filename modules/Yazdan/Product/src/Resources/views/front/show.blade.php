@@ -1,19 +1,17 @@
 @extends('Front::master')
 @section('content')
-
-{{-- header --}}
-<section class="bg-half bg-light d-table w-100">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-12 text-center">
-                <div class="page-next-level">
-                    <h2>{{$product->title}}</h2>
-                    <div class="page-next">
-                        <nav aria-label="breadcrumb" class="d-inline-block">
-                            <ul class="breadcrumb bg-white rounded shadow mb-0">
+<main>
+    <!-- breadcrumb area start -->
+    <div class="breadcrumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb-wrap">
+                        <nav aria-label="breadcrumb">
+                            <ul class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="/">صفحه اصلی</a></li>
-                                <li class="breadcrumb-item"><a href="{{route('products')}}">گالری</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">{{$product->title}}</li>
+                                <li class="breadcrumb-item"><a href="product-details.html">فروشگاه</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">جزئیات محصول</li>
                             </ul>
                         </nav>
                     </div>
@@ -21,55 +19,57 @@
             </div>
         </div>
     </div>
-</section>
+    <!-- breadcrumb area end -->
 
+    <!-- page main wrapper start -->
+    <div class="shop-main-wrapper pt-40">
+        <div class="container">
+            <div class="row">
+                <!-- product details wrapper start -->
+                <div class="col-lg-12 order-1 order-lg-2">
+                    <!-- product details inner end -->
+                    <div class="product-details-inner">
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <div class="product-large-slider img-zoom mb-20" style="direction: ltr">
+                                    <div class="pro-large-img">
+                                        <img src="{{$product->getImage(600)}}" alt="" />
+                                    </div>
+                                    @foreach ($product->galleries as $gallery)
 
-<section class="section pb-0">
+                                    <div class="pro-large-img">
+                                        <img src="{{$gallery->getImage(600)}}" alt="" />
+                                    </div>
+                                    @endforeach
 
-    {{-- product --}}
-    <div class="container">
-        <div class="row align-items-center">
+                                </div>
+                                <div class="pro-nav slick-row-10 slick-arrow-style" style="direction: ltr">
+                                    <div class="pro-large-img">
+                                        <img src="{{$product->getImage(600)}}" alt="" />
+                                    </div>
+                                    @foreach ($product->galleries as $gallery)
+                                    <div class="pro-nav-thumb">
+                                        <img src="{{$gallery->getImage(600)}}" alt="" />
+                                    </div>
+                                    @endforeach
 
-            {{-- gallery --}}
-            <div class="col-md-5">
-                <div class="tiny-single-item">
-                    <div class="tiny-slide"><img src="{{$product->getImage(600)}}" class="img-fluid rounded" alt="">
-                    </div>
-                    @foreach ($product->galleries as $gallery)
-                    <div class="tiny-slide"><img src="{{$gallery->getImage(600)}}" class="img-fluid rounded" alt="">
-                    </div>
-                    @endforeach
-                </div>
-            </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="product-details-des">
+                                    <h5 class="product-name"><a href="product-details.html">{{$product->title}}</a></h5>
+                                    <div class="ratings">
+                                        <div class="pro-review">
+                                            <span>1 نظر</span>
+                                        </div>
+                                    </div>
+                                    @include('Product::front.productPrice')
+                                    <p>{!! $product->description !!}</p>
 
-
-            <div class="col-md-7 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                {{-- form cart --}}
-                <form action="{{ route('cart.add') }}" method="POST">
-                    @csrf
-
-                    <input type="hidden" name="product_id" value="{{ $product->id }}">
-
-                    <div class="section-title ms-md-4">
-                        <h4 class="title">{{$product->title}}</h4>
-
-                        {{-- start price --}}
-                        @include('Product::front.productPrice')
-                        {{-- end price --}}
-
-                        <h5 class="mt-4 py-2">بررسی:</h5>
-                        <div class="description text-break">
-                            {!! $product->description !!}
-                        </div>
-
-                        @if ($product->variations->isNotEmpty())
-                            <div class="row mt-4 pt-2 d-flex align-items-center">
-
-                                {{-- start variation --}}
-                                <div class="col-lg-6 col-12">
-                                    <div>
-                                        <label class="form-label">نوع : </label>
-                                        <select name="variation" class="form-control variation-select">
+                                    @if ($product->variations->isNotEmpty())
+                                    <div class="pro-size mb-26 mt-26">
+                                        <h5>نوع :</h5>
+                                        <select name="variation" class="form-control w-50 variation-select">
                                             @foreach ($product->variations as $variation)
                                             <option
                                                 value="{{ json_encode($variation->only(['id' , 'quantity','is_sale' , 'price2' , 'price'])) }}">
@@ -77,127 +77,436 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                </div>
-                                {{-- end variation --}}
-
-                                {{-- start quantity --}}
-                                <div class="col-lg-6 col-12 mt-4 mt-lg-0">
-                                    <div class="shop-list">
-                                        <label class="form-label">تعداد : </label>
-                                        <div class="qty-icons ms-3">
-                                            <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                                                class="btn btn-icon btn-soft-primary minus">-</button>
-
-                                            <input min="1" max="1" name="quantity" value="1" type="number"
-                                                class="quantity-input btn btn-icon btn-soft-primary qty-btn quantity">
-
-                                            <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                                                class="btn btn-icon btn-soft-primary plus">+</button>
+                                    <div class="quantity-cart-box d-flex align-items-center">
+                                        <div class="quantity">
+                                            <div class="pro-qty">
+                                                <input type="text" value="1">
+                                            </div>
+                                        </div>
+                                        <div class="action_link">
+                                            <a class="buy-btn" href="#"><i class="ion-bag"></i>به سبد خرید اضافه
+                                                کنید</a>
                                         </div>
                                     </div>
+                                    @endif
                                 </div>
-                                {{-- end quantity --}}
-
                             </div>
-                            {{-- btn cart --}}
-                            <div class="mt-4 pt-2">
-                                <button type="submit" class="btn btn-primary">افزودن به سبد خرید</button>
-                            </div>
-                            {{-- end btn cart --}}
-
-                        @endif
-
+                        </div>
                     </div>
-                </form>
-                {{-- end form cart --}}
+                    <!-- product details inner end -->
 
-            </div>
-        </div>
-    </div>
-
-
-    <div class="container mt-100 mt-60">
-        <div class="row">
-            <div class="col-12">
-                {{-- navbar comment & body --}}
-                <ul class="nav nav-pills shadow flex-column flex-sm-row d-md-inline-flex mb-0 p-1 bg-white rounded position-relative overflow-hidden"
-                    id="pills-tab" role="tablist">
-                    <li class="nav-item m-1">
-                        <a class="nav-link py-2 px-5 active rounded" id="description-data" data-bs-toggle="pill"
-                            href="#description" role="tab" aria-controls="description" aria-selected="false">
-                            <div class="text-center">
-                                <h6 class="mb-0">توضیحات </h6>
-                            </div>
-                        </a>
-                    </li>
-
-                    <li class="nav-item m-1">
-                        <a class="nav-link py-2 px-5 rounded" id="review-comments" data-bs-toggle="pill" href="#review"
-                            role="tab" aria-controls="review" aria-selected="false">
-                            <div class="text-center">
-                                <h6 class="mb-0">نظرات </h6>
-                            </div>
-                        </a>
-                        <!--end nav link-->
-                    </li>
-                    <!--end nav item-->
-                </ul>
-                {{-- end navbar comment & body --}}
-
-                <div class="tab-content mt-5" id="pills-tabContent">
-
-                    {{-- body --}}
-                    <div class="card border-0 tab-pane fade show active" id="description" role="tabpanel"
-                        aria-labelledby="description-data">
-                        {!! $product->body !!}
-                    </div>
-                    {{-- end body --}}
-
-                    {{-- comment --}}
-                    <div class="card border-0 tab-pane fade" id="review" role="tabpanel"
-                        aria-labelledby="review-comments">
+                    <!-- product details reviews start -->
+                    <div class="product-details-reviews pt-32">
                         <div class="row">
-                            <div class="col-12">
-                                <div class="mt-5 px-5">
-                                    <div class="px-5">
-                                        @include('Comment::front.index',["commentable" => $product])
+                            <div class="col-lg-12">
+                                <div class="product-review-info">
+                                    <ul class="nav review-tab">
+                                        <li>
+                                            <a class="active" data-bs-toggle="tab" href="#tab_one">شرح</a>
+                                        </li>
+                                        <li>
+                                            <a data-bs-toggle="tab" href="#tab_three">نظر (1)</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content reviews-tab">
+                                        <div class="tab-pane fade show active" id="tab_one">
+                                            <div class="tab-one">
+                                                <p>{!! $product->body !!}</p>
+
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="tab_three">
+                                            <form action="#" class="review-form">
+                                                <h5>
+                                                    1 بررسی برای<span>چاز کانگرو</span></h5>
+                                                <div class="total-reviews">
+                                                    <div class="rev-avatar">
+                                                        <img src="files/images/img/about/avatar.jpg" alt="">
+                                                    </div>
+                                                    <div class="review-box">
+                                                        <div class="ratings">
+                                                            <span class="good"><i class="fa fa-star"></i></span>
+                                                            <span class="good"><i class="fa fa-star"></i></span>
+                                                            <span class="good"><i class="fa fa-star"></i></span>
+                                                            <span class="good"><i class="fa fa-star"></i></span>
+                                                            <span><i class="fa fa-star"></i></span>
+                                                        </div>
+                                                        <div class="post-author">
+                                                            <p><span>مدیر -</span>24 آیان 1402</p>
+                                                        </div>
+                                                        <p>گوشت نام یک ماده آلی است که در بدن بیشتر جانوران وجود دارد.
+                                                            انسان‌ها گوشت جانورانی همچون گاو، گوسفند، خوک، بوقلمون، مرغ
+                                                            و غاز را می‌خورند. گوشت بیشتر همراه استخوان و کمی چربی است و
+                                                            سرشار از پروتئین می‌باشد. </p>
+
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col">
+                                                        <label class="col-form-label"><span class="text-danger">*</span>
+                                                            نام کاربری</label>
+                                                        <input type="text" class="form-control" required>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col">
+                                                        <label class="col-form-label"><span class="text-danger">*</span>
+                                                            ایمیل شما</label>
+                                                        <input type="email" class="form-control" required>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col">
+                                                        <label class="col-form-label"><span class="text-danger">*</span>
+                                                            نقد شما</label>
+                                                        <textarea class="form-control" required></textarea>
+                                                        <div class="help-block pt-10"><span class="text-danger">توجه
+                                                                داشته باشید:</span>
+                                                            HTML ترجمه نشده است!
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col">
+                                                        <label class="col-form-label"><span class="text-danger">*</span>
+                                                            رتبه بندی</label>
+                                                        &nbsp;&nbsp;&nbsp; بد&nbsp;
+                                                        <input type="radio" value="1" name="rating">
+                                                        &nbsp;
+                                                        <input type="radio" value="2" name="rating">
+                                                        &nbsp;
+                                                        <input type="radio" value="3" name="rating">
+                                                        &nbsp;
+                                                        <input type="radio" value="4" name="rating">
+                                                        &nbsp;
+                                                        <input type="radio" value="5" name="rating" checked>
+                                                        &nbsp;خوب
+                                                    </div>
+                                                </div>
+                                                <div class="buttons">
+                                                    <button class="sqr-btn" type="submit">ادامه</button>
+                                                </div>
+                                            </form> <!-- end of review-form -->
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    {{-- end comment --}}
-
+                    <!-- product details reviews end -->
                 </div>
+                <!-- product details wrapper end -->
             </div>
         </div>
     </div>
+    <!-- page main wrapper end -->
 
-    {{-- end new --}}
+    <!-- product feature start -->
+    <div class="related-product pt-40 pb-40">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-header-wrap">
+                        <!-- section title start -->
+                        <div class="section-title">
+                            <h2>محصولات مرتبط</h2>
+                        </div>
+                        <!-- section title end -->
 
-
-    {{-- latest products --}}
-    <div class="container mt-100 mt-60">
-        <div class="row">
-            <div class="col-12">
-                <h5 class="mb-0">محصولات اخیر</h5>
-            </div>
-
-            <div class="col-12 my-4 mb-5">
-                <div class="tiny-four-item">
-                    @foreach ($latestProducts as $product)
-                    <div class="tiny-slide">
-                        @include('Product::front.singleProduct')
+                        <!-- Start Slider Navigation -->
+                        <div class="ht-slick-nav slick-append" style="direction: ltr">
+                            <button class="prev-four"><i class="ion-ios-arrow-left"></i></button>
+                            <button class="next-four right"><i class="ion-ios-arrow-right"></i></button>
+                        </div>
+                        <!-- End Slider Navigation -->
                     </div>
-                    @endforeach
+
+                    <!-- categories features start -->
+                    <div class="categories-features-wrapper">
+                        <div class="ht-slick-slider-wrap" style="direction: ltr">
+                            <div class="ht-slick-slider slick-row-15"
+                                data-slick='{"slidesToShow": 4, "slidesToScroll": 1, "speed": 1000, "arrows": true, "prevArrow": ".prev-four", "nextArrow": ".next-four", "responsive":[{"breakpoint":992, "settings":{"slidesToShow": 3}}, {"breakpoint":768, "settings":{"slidesToShow": 2}}, {"breakpoint":480, "settings":{"slidesToShow": 1}}]}'>
+                                <!-- single item start -->
+                                <div class="product-item">
+                                    <div class="product-thumb">
+                                        <a href="product-details.html">
+                                            <img src="files/images/img/product/product-5.jpg" alt="">
+                                        </a>
+                                        <div class="add-to-links">
+                                            <a href="cart.html" data-bs-toggle="tooltip" title="Add to Cart"><i
+                                                    class="ion-bag"></i></a>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span
+                                                    data-bs-toggle="tooltip" title="Quick View"><i
+                                                        class="ion-ios-eye-outline"></i></span></a>
+                                            <a href="wishlist.html" data-bs-toggle="tooltip" title="Wishlist"><i
+                                                    class="ion-android-favorite-outline"></i></a>
+                                        </div>
+                                        <div class="product-badge product-badge__2">
+                                            <div class="product-label new">
+                                                <span>جدید</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-content">
+                                        <div class="product-content">
+                                            <div class="product-name">
+                                                <h5><a href="product-details.html">انتخاب خصوصی خرچنگ توده‌ای ادم‌جور
+                                                        وحشی صید شده</a></h5>
+                                            </div>
+                                            <div class="ratings">
+                                                <span><i class="ion-android-star"></i></span>
+                                                <span><i class="ion-android-star"></i></span>
+                                                <span><i class="ion-android-star"></i></span>
+                                                <span><i class="ion-android-star"></i></span>
+                                                <span><i class="ion-android-star"></i></span>
+                                            </div>
+                                            <div class="price-box">
+                                                <span class="price-old"><del></del></span>
+                                                <span class="price-regular">50.00 تومان</span>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- single item end -->
+
+                                <!-- single item start -->
+                                <div class="product-item">
+                                    <div class="product-thumb">
+                                        <a href="product-details.html">
+                                            <img src="files/images/img/product/product-6.jpg" alt="">
+                                        </a>
+                                        <div class="add-to-links">
+                                            <a href="cart.html" data-bs-toggle="tooltip" title="Add to Cart"><i
+                                                    class="ion-bag"></i></a>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span
+                                                    data-bs-toggle="tooltip" title="Quick View"><i
+                                                        class="ion-ios-eye-outline"></i></span></a>
+                                            <a href="wishlist.html" data-bs-toggle="tooltip" title="Wishlist"><i
+                                                    class="ion-android-favorite-outline"></i></a>
+                                        </div>
+                                        <div class="product-badge product-badge__2">
+                                            <div class="product-label new">
+                                                <span>جدید</span>
+                                            </div>
+                                            <div class="product-label discount">
+                                                <span>-10%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-content">
+                                        <div class="product-content">
+                                            <div class="product-name">
+                                                <h5><a href="product-details.html"> کیلوگرمی مخلوط ارگانیک میوه و
+                                                        سبزیجات غیر </a></h5>
+                                            </div>
+                                            <div class="ratings">
+                                                <span><i class="ion-android-star"></i></span>
+                                                <span><i class="ion-android-star"></i></span>
+                                                <span><i class="ion-android-star"></i></span>
+                                                <span><i class="ion-android-star"></i></span>
+                                                <span><i class="ion-android-star"></i></span>
+                                            </div>
+                                            <div class="price-box">
+                                                <span class="price-old"><del>80.00 تومان</del></span>
+                                                <span class="price-regular">60.00 تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- single item end -->
+
+                                <!-- single item start -->
+                                <div class="product-item">
+                                    <div class="product-thumb">
+                                        <a href="product-details.html">
+                                            <img src="files/images/img/product/product-11.jpg" alt="">
+                                        </a>
+                                        <div class="add-to-links">
+                                            <a href="cart.html" data-bs-toggle="tooltip" title="Add to Cart"><i
+                                                    class="ion-bag"></i></a>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span
+                                                    data-bs-toggle="tooltip" title="Quick View"><i
+                                                        class="ion-ios-eye-outline"></i></span></a>
+                                            <a href="wishlist.html" data-bs-toggle="tooltip" title="Wishlist"><i
+                                                    class="ion-android-favorite-outline"></i></a>
+                                        </div>
+                                        <div class="product-badge product-badge__2">
+                                            <div class="product-label new">
+                                                <span>جدید</span>
+                                            </div>
+                                            <div class="product-label discount">
+                                                <span>-5%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-content">
+                                        <div class="product-content">
+                                            <div class="product-name">
+                                                <h5><a href="product-details.html">جعبه میوه و سبزیجات 8 کیلوگرمی
+                                                        ارگانیک میوه شور</a></h5>
+                                            </div>
+                                            <div class="ratings">
+                                                <span><i class="ion-android-star"></i></span>
+                                                <span><i class="ion-android-star"></i></span>
+                                                <span><i class="ion-android-star"></i></span>
+                                                <span><i class="ion-android-star"></i></span>
+                                                <span><i class="ion-android-star"></i></span>
+                                            </div>
+                                            <div class="price-box">
+                                                <span class="price-old"><del>40.00 تومان</del></span>
+                                                <span class="price-regular">30.00 تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- single item end -->
+
+                                <!-- single item start -->
+                                <div class="product-item">
+                                    <div class="product-thumb">
+                                        <a href="product-details.html">
+                                            <img src="files/images/img/product/product-13.jpg" alt="">
+                                        </a>
+                                        <div class="add-to-links">
+                                            <a href="cart.html" data-bs-toggle="tooltip" title="Add to Cart"><i
+                                                    class="ion-bag"></i></a>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span
+                                                    data-bs-toggle="tooltip" title="Quick View"><i
+                                                        class="ion-ios-eye-outline"></i></span></a>
+                                            <a href="wishlist.html" data-bs-toggle="tooltip" title="Wishlist"><i
+                                                    class="ion-android-favorite-outline"></i></a>
+                                        </div>
+                                        <div class="product-badge product-badge__2">
+                                            <div class="product-label new">
+                                                <span>جدید</span>
+                                            </div>
+                                            <div class="product-label discount">
+                                                <span>-9%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-content">
+                                        <div class="product-content">
+                                            <div class="product-name">
+                                                <h5><a href="product-details.html">خانواده فیله ماهی آزاد میگوی سفید
+                                                        پرورش یافته در مزرعه کروگر</a></h5>
+                                            </div>
+                                            <div class="ratings">
+                                                <span><i class="ion-android-star"></i></span>
+                                                <span><i class="ion-android-star"></i></span>
+                                                <span><i class="ion-android-star"></i></span>
+                                                <span><i class="ion-android-star"></i></span>
+                                                <span><i class="ion-android-star"></i></span>
+                                            </div>
+                                            <div class="price-box">
+                                                <span class="price-old"><del>60.00 تومان</del></span>
+                                                <span class="price-regular">40.00 تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- single item end -->
+
+                                <!-- single item start -->
+                                <div class="product-item">
+                                    <div class="product-thumb">
+                                        <a href="product-details.html">
+                                            <img src="files/images/img/product/product-12.jpg" alt="">
+                                        </a>
+                                        <div class="add-to-links">
+                                            <a href="cart.html" data-bs-toggle="tooltip" title="Add to Cart"><i
+                                                    class="ion-bag"></i></a>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span
+                                                    data-bs-toggle="tooltip" title="Quick View"><i
+                                                        class="ion-ios-eye-outline"></i></span></a>
+                                            <a href="wishlist.html" data-bs-toggle="tooltip" title="Wishlist"><i
+                                                    class="ion-android-favorite-outline"></i></a>
+                                        </div>
+                                        <div class="product-badge product-badge__2">
+                                            <div class="product-label new">
+                                                <span>جدید</span>
+                                            </div>
+                                            <div class="product-label discount">
+                                                <span>-6%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-content">
+                                        <div class="product-content">
+                                            <div class="product-name">
+                                                <h5><a href="product-details.html">انتخاب خصوصی خرچنگ توده‌ای ادم‌جور
+                                                        وحشی صید شده</a></h5>
+                                            </div>
+                                            <div class="ratings">
+                                                <span><i class="ion-android-star"></i></span>
+                                                <span><i class="ion-android-star"></i></span>
+                                                <span><i class="ion-android-star"></i></span>
+                                                <span><i class="ion-android-star"></i></span>
+                                                <span><i class="ion-android-star"></i></span>
+                                            </div>
+                                            <div class="price-box">
+                                                <span class="price-old"><del>90.00 تومان</del></span>
+                                                <span class="price-regular">70.00 تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- single item end -->
+
+                                <!-- single item start -->
+                                <div class="product-item">
+                                    <div class="product-thumb">
+                                        <a href="product-details.html">
+                                            <img src="files/images/img/product/product-8.jpg" alt="">
+                                        </a>
+                                        <div class="add-to-links">
+                                            <a href="cart.html" data-bs-toggle="tooltip" title="Add to Cart"><i
+                                                    class="ion-bag"></i></a>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span
+                                                    data-bs-toggle="tooltip" title="Quick View"><i
+                                                        class="ion-ios-eye-outline"></i></span></a>
+                                            <a href="wishlist.html" data-bs-toggle="tooltip" title="Wishlist"><i
+                                                    class="ion-android-favorite-outline"></i></a>
+                                        </div>
+                                        <div class="product-badge product-badge__2">
+                                            <div class="product-label new">
+                                                <span>جدید</span>
+                                            </div>
+                                            <div class="product-label discount">
+                                                <span>-10%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-content">
+                                        <div class="product-content">
+                                            <div class="product-name">
+                                                <h5><a href="product-details.html">تازه در حالی که صید استیک اره ماهی به
+                                                        وفور تازه است</a></h5>
+                                            </div>
+                                            <div class="ratings">
+                                                <span><i class="ion-android-star"></i></span>
+                                                <span><i class="ion-android-star"></i></span>
+                                                <span><i class="ion-android-star"></i></span>
+                                                <span><i class="ion-android-star"></i></span>
+                                                <span><i class="ion-android-star"></i></span>
+                                            </div>
+                                            <div class="price-box">
+                                                <span class="price-old"><del>40.00 تومان</del></span>
+                                                <span class="price-regular">30.00 تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- single item end -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- categories features end -->
                 </div>
             </div>
-
-
         </div>
-
     </div>
-    {{-- end latest products --}}
-
-</section>
+    <!-- product feature end -->
+</main>
 @endsection

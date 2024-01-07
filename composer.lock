@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3d846228312c5b8d48b12266cba8421e",
+    "content-hash": "a8ddedb07f66bdad9b5fc10cf40cfb14",
     "packages": [
         {
             "name": "anetwork/validation",
@@ -6403,6 +6403,31 @@
             }
         },
         {
+            "name": "yazdan/order",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "./modules/Yazdan/Order",
+                "reference": "5a681512f67a3690f8f7c6ddea10a5352c49c1eb"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Yazdan\\Order\\App\\Providers\\OrderServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Yazdan\\Order\\": "src"
+                }
+            },
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
             "name": "yazdan/product",
             "version": "dev-master",
             "dist": {
@@ -9037,6 +9062,7 @@
         "yazdan/home": 20,
         "yazdan/media": 20,
         "yazdan/mobile-auth": 20,
+        "yazdan/order": 20,
         "yazdan/product": 20,
         "yazdan/role": 20,
         "yazdan/search": 20,

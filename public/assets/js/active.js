@@ -91,12 +91,6 @@
     $('.ht-slick-slider').slick();
     /*------ product slider active end ------*/
 
-
-    /*------- nice select active start -------*/
-    $('select').niceSelect();
-    /*------- nice select active end -------*/
-
-
     /*-------- Off Canvas Open close start--------*/
     $(".off-canvas-btn").on('click', function () {
         $("body").addClass('fix');
