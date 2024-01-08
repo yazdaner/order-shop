@@ -10,8 +10,6 @@ use Yazdan\Seller\Repositories\SellerRepository;
 
 class SellerInfoController extends Controller
 {
-
-
     public function info()
     {
         $this->authorize('manage', Seller::class);

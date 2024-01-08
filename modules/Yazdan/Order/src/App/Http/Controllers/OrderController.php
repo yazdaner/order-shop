@@ -22,23 +22,50 @@ class OrderController extends Controller
         $variation_id = json_decode($request->variation)->id;
         $variation = VariationRepository::get($variation_id);
 
+        if($request->quantity > $variation->quantity)
+        {
+            newFeedbacks('ناموفق',' تعداد محصول انتخابی بیشتر از حد مجاز می باشد','error');
+            return back();
+        }
+
         $address = Address::where('user_id', auth()->id())->first();
         $provinces = Province::all();
 
         return view("Order::front.checkout",compact('address','provinces','variation','quantity'));
     }
 
+    public function buy(Request $request)
+    {
+        if(auth()->user()->address == null){
+            newFeedbacks('ناموفق','لطفا آدرس خود را وارد کنید','error');
+            return back();
+        }
+
+        $variation = VariationRepository::get($request->variation_id);
+
+        if($request->quantity > $variation->quantity)
+        {
+            newFeedbacks('ناموفق',' تعداد محصول انتخابی بیشتر از حد مجاز می باشد','error');
+            return redirect($variation->product->path());
+        }
+
+        OrderRepository::create($request);
+        newFeedbacks('با موفقعیت','سفارش شما به ثبت رسید');
+        return redirect()->route('users.orders');
+    }
 
     // Home
     public function orders()
     {
-        return view("Order::home.index");
+        $orders = Order::where('user_id', auth()->id())->latest()->paginate('10');
+        return view("Order::home.index",compact('orders'));
     }
 
      // Admin
      public function index()
      {
-         return view("Order::admin.index");
+        $orders = Order::latest()->paginate('10');
+         return view("Order::admin.index",compact('orders'));
      }
 
      public function edit(Order $order)

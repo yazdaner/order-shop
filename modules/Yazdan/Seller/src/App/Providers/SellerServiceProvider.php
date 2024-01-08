@@ -38,19 +38,23 @@ class SellerServiceProvider extends ServiceProvider
         config()->set('sidebarHome.items.sellerProduct', [
             'icon' => 'uil-dashboard',
             'url' => route('home.products'),
-            'title' => 'محصولات'
+            'title' => 'محصولات',
+            'permission' => PermissionRepository::PERMISSION_MANAGE_SELLER,
+
         ]);
             // profile
         config()->set('sidebarHome.items.sellerProfile', [
             'icon' => 'uil-dashboard',
             'url' => route('home.seller.profile'),
-            'title' => 'صفحه فروشنده'
+            'title' => 'صفحه فروشنده',
+            'permission' => PermissionRepository::PERMISSION_MANAGE_SELLER,
         ]);
             // info
          config()->set('sidebarHome.items.sellerInfo', [
             'icon' => 'uil-dashboard',
             'url' => route('home.seller.info'),
-            'title' => 'مشخصات فروشنده'
+            'title' => 'مشخصات فروشنده',
+            'permission' => PermissionRepository::PERMISSION_MANAGE_SELLER,
         ]);
     }
 }

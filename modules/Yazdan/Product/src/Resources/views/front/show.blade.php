@@ -56,8 +56,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-7">
-                                <form action="{{route('checkout')}}" method="post">
-                                    @csrf
+                                <form action="{{route('checkout')}}">
                                     <div class="product-details-des">
                                         <h5 class="product-name"><a href="product-details.html">{{$product->title}}</a></h5>
                                         <div class="ratings">

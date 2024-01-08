@@ -16,8 +16,11 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('payment_id');
-            $table->foreign('payment_id')->references('id')->on('payments')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('variation_id');
+            $table->integer('price');
+            $table->integer('quantity');
+            $table->integer('total_price');
             $table->enum('status', OrderRepository::$statuses);
             $table->string('tracking_code')->nullable();
             $table->timestamps();

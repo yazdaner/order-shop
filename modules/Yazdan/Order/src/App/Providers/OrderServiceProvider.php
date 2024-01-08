@@ -2,12 +2,9 @@
 
 namespace Yazdan\Order\App\Providers;
 
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Yazdan\RolePermissions\Repositories\PermissionRepository;
-use Yazdan\Order\App\Models\Order;
-use Yazdan\Order\App\Policies\OrderPolicy;
 
 class OrderServiceProvider extends ServiceProvider
 {
@@ -26,14 +23,14 @@ class OrderServiceProvider extends ServiceProvider
         config()->set('sidebar.items.orders', [
             'icon' => 'i-orders',
             'url' => route('admin.orders.index'),
-            'title' => 'محصولات خریداری شده',
+            'title' => 'محصولات سفارش داده شده',
             'permission' => PermissionRepository::PERMISSION_MANAGE_ORDER,
         ]);
 
         config()->set('sidebarHome.items.orders', [
             'icon' => 'uil-orders',
             'url' => route('users.orders'),
-            'title' => 'محصولات شما'
+            'title' => 'سفارشات شما'
         ]);
     }
 }
